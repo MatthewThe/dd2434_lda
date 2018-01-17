@@ -26,19 +26,20 @@ gamma_init = [alpha_init[0] + float(N)/K] * K # variational hypermeter of topic 
 phi_init = np.full((K, N), 1./K) # variational hypermeter of topics
 eta = 0.001 # fixed hyperparameter for the smoothed version
 Lambda_init = np.zeros((D, N)) # variational hyperparameter for smoothed version
-likelihood =  0 # Likelihood to be minimized
-converge_threshold = 0.0001 # Converge criterion
+likelihood = 0 # Likelihood to be minimized
+EstepConvergeThreshold = 10**(-5)
+EstepMaxIterations = 10 
 
 
 ## Functions
 
-def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
+def ComputeLikelihood(tf, K, D, N, V, alpha, eta, gamma, phi, Lambda):
     # Computes likelihood of the variational model (eq. 15).
-    # Lambda is the additional hyperparameter for the betas. (smoothed version) 
+
     return(likelihood)
 
 
-def ExpectationStep(tf, K, D, N, alpha, beta, gamma, phi, Lambda):
+def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
     #
     # k: topic (N.B.: r in Hazal's notes)
@@ -50,53 +51,86 @@ def ExpectationStep(tf, K, D, N, alpha, beta, gamma, phi, Lambda):
     # φ: [document, word in document, topic], word and topic probability for each word in the document (Multinomial)
     # tf: [document, word in dictionary]
     # α: [document], prior topic probability
-    # β: [topic], prior word probability (N.B.: eta in Hazal's notes!)
+    # eta: [topic], prior word probability 
+    likelihood = 10**(-10) 
+    converged = False
+    iterations = 0
+    while(not(converged)):
+        if(iterations > EstepMaxIterations):
+            raise ValueError('E-step not converged after %d iterations' %iterations)
+        
+        iterations += 1
     
-    for d in range(D):
-        wd = np.repeat(range(V), tf[d,:])
-        for n in range(len(wd)):
-            for k in range(K):
-                phi[d,n,k] = np.exp(digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:])))
-            phi[d,n,:] /= sum(phi[d,n,:])
+        for d in range(D):
+            wd = np.repeat(range(V), tf[d,:])
+            for n in range(len(wd)):
+                for k in range(K):
+                    phi[d,n,k] = np.exp(digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:])))
+                phi[d,n,:] /= sum(phi[d,n,:])
     
-    for d in range(D):
-        gamma[d,:] = alpha[d] + np.sum(phi[d,:,:], axis = 0)
-    
-    Lambda[k,:] = beta[k]
+        for d in range(D):
+            gamma[d,:] = alpha[d] + np.sum(phi[d,:,:], axis = 0)
+        
+        # newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
+        newLikelihood = 0.1
+        dlikelihood = (newLikelihood - likelihood)/likelihood
+        likelihood = newLikelihood
+        if(dlikelihood < EstepConvergeThreshold):
+            print('E-step converged after %d iterations' %iterations)
+            break
+        
+    Lambda[k,:] = eta[k]
     for d in range(D):
         wd = np.repeat(range(V), tf[d,:])
         for k in range(K):
             for n in range(len(wd)):        
                 Lambda[k,wd[n]] += phi[d,n,k]
-    
-    #likelihood = ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda)
+                
     return(phi, gamma, Lambda, likelihood)
+
 
 def ExpectationStepUnitTest():
     alpha = np.random.rand(D,1)
-    beta = np.random.rand(K,1)
+    eta = np.random.rand(K,1)
     gamma = np.random.rand(D,K)
     phi = np.random.rand(D,N,K)
     Lambda = np.random.rand(K,V)
     
-    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, beta, gamma, phi, Lambda)
-    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, beta, gamma, phi, Lambda)
+    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
+    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
 
 ExpectationStepUnitTest()
 
 def updateAlpha(D, K, alpha, gamma):
-    # Newton-Rhapson algorithm for updating alpha
+    # Newton-Rhaphson algorithm for updating alpha
+    alpha = np.random.rand(D,1)
     return(alpha)
+    
+def updateEta(V, K, Lambda, eta): 
+     # Newton-Rhaphson algorithm for updating alpha
+    eta = np.random.rand(V, 1)
+    return(eta)
 
 
-def MaximizationStep(tf, K, D, N, phi, gamma, likelihood):
-    # Returns updated alpha, beta and lambda
-    return(alpha, beta, Lambda)
+def MaximizationStep(D, V, K,  alpha, gamma, phi, Lambda, eta, likelihood):
+    # Returns updated alpha, eta
+    alpha = updateAlpha(D, K, alpha, gamma)
+    
+    eta = updateEta(V, K, Lambda, eta)
+    
+    return(alpha, eta)
 
 
-def ExpectationMaximization( ):
+def VariationalExpectationMaximization( ):
     # Calculates variational parameters gamma, phi, and lambda iteratively until convergence
+    
+    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
+    
+    alpha, eta = MaximizationStep(D, V, K, alpha, gamma, phi, Lambda, eta, likelihood)
+    
     return(gamma, Lambda, phi)
+    
+    
     
     
 # Document modeling
