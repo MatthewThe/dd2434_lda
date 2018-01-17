@@ -1,6 +1,7 @@
 ﻿import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import digamma, polygamma, gammaln 
+from scipy import special
 from sklearn.feature_extraction.text import CountVectorizer
 import os
 from bs4 import BeautifulSoup
@@ -188,178 +189,106 @@ ExpectationStepUnitTest()
 
 ### Start of Maximization Part ###
 
-#def updateAlpha(D, K, alpha, gamma):
-#    # Newton-Rhaphson algorithm for updating alpha
-#    alpha = np.random.rand(D,1)
-#    return(alpha)
-    
-#def updateEta(V, K, Lambda, eta): 
-#     # Newton-Rhaphson algorithm for updating alpha
-#    eta = np.random.rand(V, 1)
-#    return(eta)
-
-# TODO: Check alpha, readjust.
-def calculateLowerBound(param1, param2):
-    # Given a parameter pair (alpha&gamma or eta&lambda), this function calculates the lower bound (Appendix A.4.2)
-    d2, d1 = param2.shape
-    
-    bound = 0
-    sum_param1 = np.sum(param1)
-    bound = bound + d2 * np.log(polygamma(0, sum_param1)) # gamma function
-    
-    temp = 0
-    for i in range(d1):
-        temp = temp + np.log(polygamma(0, param1[i])) # gamma function
-    bound = bound - d2 * temp
-    
-    sum_param2 = np.sum(param2, axis=1)
-    di_sum_param2 = polygamma(1, sum_param2) # digamma function
-    
-    temp = 0
-    for d in range(d2):
-        for i in range(d1):
-            diff = polygamma(1, param2[d,i]) - di_sum_param2[d]  # digamma function
-            temp = temp + (param1[i]-1) * diff
-    bound = bound + temp
-    
-    return bound
-
-def calculateGradient(param1, param2):
-    # Given a parameter pair (alpha&gamma or eta&lambda), this function calculates the gradient dL (Appendix A.4.2)
-    d2, d1 = param2.shape
-    
-    gradient = np.zeros((d1))
-    
-    sum_param1 = np.sum(param1)
-    gradient = gradient + d2 * polygamma(1, sum_param1) # digamma function
-    
-    sum_param2 = np.sum(param2, axis=1)
-    di_sum_param2 = polygamma(1, sum_param2) # digamma function
-    gradient = gradient - np.sum(di_sum_param2)
-    
-    for i in range(d1):
-        temp = - d2 * polygamma(1, param1[i]) # digamma function
-        for d in range(d2):
-            temp = temp + polygamma(1, param2[d,i])  # digamma function
+def computeSufficientStats(D, K, gamma):
+    # Given the parameter (gamma or Lambda), this function calculates the sufficient statistics.
+    stats = 0
+    sum_gamma = np.sum(gamma, axis=1)   # (D x 1)
+    for d in range(D):
+        stats = stats - K * polygamma(0, sum_gamma[d]) # digamma
+        di_gamma_d = polygamma(0, gamma[d])
+        stats = stats + np.sum(di_gamma_d)
         
-        gradient[i] = gradient[i] + temp
-    
+    return stats
+
+def computeL(D, K, alpha, stats):
+    # Given the parameter (alpha or eta) and the sufficient statistics, this function calculates the lower bound.
+    lik = D * np.log( special.gamma(K*alpha) ) 
+    lik = lik - D * K * np.log(alpha)
+    lik = lik + (alpha - 1) * stats
+    return lik
+
+def computeGradient(D, K, alpha, gamma, stats):
+    # Given the parameter pairs (alpha&gamma or eta&Lambda), this function calculates the gradient.
+    gradient = D * K * polygamma(0, K*alpha) # digamma
+    gradient = gradient - D * K * polygamma(0, alpha)
+    gradient = gradient + stats
     return gradient
 
-def calculateHessian(param1, d2):
-    # Given a parameter (alpha or eta), this function calculates the hessian d2L (Appendix A.4.2 and A.2)
-    sum_param1 = np.sum(param1)
-    z = - polygamma(2, sum_param1) # trigamma function
-    hessian_diag = d2 * polygamma(2, param1) # trigamma function
-    hessian = np.diag(hessian_diag) + z
+def computeHessian(D, K, alpha):
+    # Given the parameter (alpha or eta), this function calculates the hessian.
+    hessian = D * K * K * polygamma(1, K*alpha) # trigamma
+    hessian = hessian - D * K * polygamma(1, alpha)
+    return hessian
+
+def moveAlpha(alpha, gradient, hessian):
+    # This function updates the parameter.
+    # The logarithmic scale is taken from Colorado Reed paper.
+    invHg = gradient / (hessian * alpha + gradient)
     
-    return hessian_diag, z, hessian
-
-def calculateC(gradient, hessian_diag, z):
-    # Given gradient and hessian, this function calculates C value (Appendix A.2)
-    d1 = gradient.shape[0]
+    log_alpha_new = np.log(alpha) - invHg
+    alpha_new = np.exp(log_alpha_new)
     
-    up = np.divide(gradient, hessian_diag)
-    up = np.sum(up)
-    bottom = 1 / z
-    for j in range(d1):
-        bottom = bottom + (1 / hessian_diag[j])
+    # OR!!
+    # alpha_new = alpha - invHg
+    
+    return alpha_new
 
-    c = up / bottom
-    return c
 
-def calculateInvHg(gradient, hessian_diag, c):
-    # Given gradient, hessian and c; this function calculates inv_H*g (i.e the step size) (Appendix A.2)
-    invHg = np.divide((gradient - c), hessian_diag)
-    return invHg
-
-def moveParam(param1, invHg):
-    # This function updates the parameter (p_new = p_old - inv_H(p_old)*g(p_old)) (Appendix A.2)
-    param1_new = param1 - invHg
-    return param1_new
-
-#def updateAlpha(D, K, alpha, gamma):
-#    # Newton-Rhapson algorithm for updating alpha
-#    return(alpha)
-def updateParam(param1, param2, maxIter=100, tol=0.001, isDisplay=False):
-    # This function is the generalized version of updating alpha and eta parameters.
+def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
+    # This function updates alpha OR eta parameter. 
+    # Since the form of equations are the same, we can use this function to update eta as well.
     #
-    # param1  (d1 x 1): alpha (Kx1)   OR      eta (Vx1)
-    # param2 (d2 x d1): gamma (DxK)   OR   Lambda (KxV)
+    # param1: alpha (Kx1)   OR      eta (Vx1)
+    # param2: gamma (DxK)   OR   Lambda (KxV)
     # maxIter & tol: Convergence criterias. 
-    # isDisplay: Printing values for debugging purpose
     isConverged = False
     
-    d2,d1 = param2.shape
+    D, K = gamma.shape
+    
     epoch = 0
     bounds = []
-    
-    prev_gradient = np.zeros((d1))
-    
-    while(not isConverged):
-        bound = calculateLowerBound(param1, param2)
-        gradient = calculateGradient(param1, param2)
-        hessian_diag, z, hessian = calculateHessian(param1, d2)
-        c = calculateC(gradient, hessian_diag, z)
-        invHg = calculateInvHg(gradient, hessian_diag, c)
-        param1_new = moveParam(param1, invHg)
-        
-        if(isDisplay):
-            print("\n\tIteration: %d" %e)
-            print("Bound")
-            print(bound)
-            print("\nGradient")
-            print(gradient)
-            print("\nHessian Parts")
-            print(hessian_diag)
-            print(z)
-            print("\nHessian")
-            print(hessian)
-            print("\nC")
-            print(c)
-            print("\ninvHg")
-            print(invHg)
-            print("\nPrev Param:")
-            print(param1)
-            print("\nNew Param:")
-            print(param1_new)
 
-        param1 = param1_new
+    while(not isConverged):
+        stats = computeSufficientStats(D, K, gamma)
+        
+        bound = computeL(D, K, alpha, stats)
+        gradient = computeGradient(D, K, alpha, gamma, stats)
+        hessian = computeHessian(D, K, alpha)
+
+        #print("Epoch: %d" %epoch)
+        #print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
+        alpha = moveAlpha(alpha, gradient, hessian)
+        
+        #print("\tNew Value: %.5f" % (alpha))
+        
         bounds.append(bound)
         epoch = epoch + 1
         
-        if epoch==100:
+        if epoch==maxIter:
             isConverged = True
-            print("\nConverged: max iteration\n")
+            #print("\nConverged: max iteration\n")
         else:
-            if epoch>1:
-                diff = np.isclose(gradient, prev_gradient)
-                if np.all(diff):
-                    isConverged = True
-                    print("\nConverged: gradient diff at iteration: %d\n" % epoch)
-            prev_gradient = gradient
-    return param1, bounds
+            if epoch>1 and np.absolute(gradient)<tol:
+                isConverged = True
+                #print("\nConverged: gradient close to zero at iteration: %d\n" % epoch)
+        
+    return alpha, bounds
 
-#def MaximizationStep(D, V, K,  alpha, gamma, phi, Lambda, eta, likelihood):
-#    # Returns updated alpha, eta
-#    alpha = updateAlpha(D, K, alpha, gamma)    
-#    eta = updateEta(V, K, Lambda, eta)
-#    return(alpha, eta)
 def MaximizationStep(alpha, gamma, eta, Lambda):
     # Returns updated alpha and eta
-    alpha, _ = updateParam(alpha, gamma)
-    eta, _ = updateParam(eta, Lambda)
-   
+    alpha, _ = updateAlpha(alpha, gamma)
+    eta, _ = updateAlpha(eta, Lambda)
+    
     return(alpha, eta)
 
 def MaximizationStepUnitTest():
     K = 10
-    D = 100
+    D = 20
     V = 50
     
-    alpha = np.random.rand(K) + 1.5
+    alpha = np.random.rand()
     gamma = np.ones((D,K))
-    eta = np.random.rand(V) + 1.5
+    eta = np.random.rand() 
     Lambda = np.ones((K,V))
     
     alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
