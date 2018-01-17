@@ -1,6 +1,9 @@
 ﻿import numpy as np
 import matplotlib.pyplot as plt
-from scipy.special import digamma, polygamma 
+from scipy.special import digamma, polygamma, gammaln 
+from sklearn.feature_extraction.text import CountVectorizer
+import os
+from bs4 import BeautifulSoup
 
 def getDataDimensions(input_data):
     # gets the dimensions of the data tf
@@ -10,7 +13,31 @@ def getDataDimensions(input_data):
 def loadMockData(D,V,max_repeats=5):
     return np.random.randint(max_repeats, size=(D,V))
 
-#tf = loadData()
+def loadData(folderName, keyword_1, keyword_2):
+    data = []
+    labels_1 = []
+    topic_of_interest_1 = keyword_1
+    labels_2 = []
+    topic_of_interest_2 = keyword_2
+    for file in os.listdir(folderName):
+        if file.endswith('.sgm'):
+            f = open(folderName + '/' + file,'rb')
+            #print('reutersdata/' + file)
+            filestring = f.read()
+            soup = BeautifulSoup(filestring)
+            contents = soup.findAll('text')
+            for content in contents:
+                data.append(content.text)
+            topics = soup.findAll('topics')
+            for topic in topics:
+                labels_1.append(topic_of_interest_1 in topic.text)
+                labels_2.append(topic_of_interest_2 in topic.text)
+    vectorizer = CountVectorizer()
+    tf = vectorizer.fit_transform(data)
+    
+    return(tf, labels_1, labels_2)
+
+#tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
 tf = loadMockData(50, 100)
 
 # Initialize parameters
