@@ -33,10 +33,67 @@ EstepMaxIterations = 10
 
 ## Functions
 
-def ComputeLikelihood(tf, K, D, N, V, alpha, eta, gamma, phi, Lambda):
+def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
     # Computes likelihood of the variational model (eq. 15).
+    # Lambda is the additional hyperparameter for the betas. (smoothed version) 
 
-    return(likelihood)
+    Likelihood = np.zeros((D,1))
+    for d in range(D):
+        #Hazal's notes, eq. 6
+        E_theta_alpha = 0
+        E_theta_alpha = gammaln(np.sum(alpha[d,:])) \
+                        - np.sum(gammaln(alpha[d,:])) \
+                        + np.sum([((alpha[d] - 1) \
+                            *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
+                           for i in range(K)])
+
+        #Hazal's notes, eq. 7
+        E_z_theta = 0
+        wd = np.repeat(range(V), tf[d,:])
+        for n in range(len(wd)):
+            for r in range(K):
+               E_z_theta += phi[d,n,r] *(digamma(gamma[d,r]) - digamma(np.sum(gamma[d,:])))
+
+        #Hazal's notes, eq. 8
+        E_beta_eta = 0
+        for r in range(K):
+            for i in range(V):
+                E_beta_eta += gammaln(eta*V) - V*gammaln(eta) \
+                              + (eta - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+
+        #Hazal's notes, eq. 9
+        E_w_z_beta = 0
+        wd = np.repeat(range(V), tf[d,:])
+        for n in range(len(wd)):
+            for r in range(K):
+                for j in range(V):
+                    E_w_z_beta += phi[d,n,r]*(digamma(Lambda[r,wd[n]]) - digamma(np.sum(Lambda[r,:])))
+
+        #Hazal's notes, eq. 10
+        E_theta_gamma = 0
+        E_theta_gamma = gammaln(np.sum(gamma[d,:])) \
+                        - np.sum(gammaln(gamma[d,:])) \
+                        + np.sum([((gamma[d,i] - 1) \
+                            *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
+                           for i in range(K)])
+
+        #Hazal's notes, eq. 11
+        E_z_phi = 0
+        wd = np.repeat(range(V), tf[d,:])
+        for n in range(len(wd)):
+            for r in range(K):
+                E_z_phi += phi[d,n,r]*np.log(phi[d,n,r])
+
+        #Hazal's notes, eq. 12
+        E_beta_lambda = 0
+        for r in range(K):
+            E_beta_lambda += gammaln(np.sum(Lambda[r,:])) - np.sum(gammaln(Lambda[r,:]))
+            for i in range(V):
+                E_beta_lambda += (Lambda[r,i] - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+
+
+        Likelihood[d] = E_theta_alpha + E_z_theta + E_beta_eta + E_w_z_beta - E_theta_gamma - E_z_phi - E_beta_lambda
+    return(np.sum(Likelihood))
 
 
 def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda):
