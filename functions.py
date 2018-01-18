@@ -9,6 +9,54 @@ from bs4 import BeautifulSoup
 
 np.random.seed(1)
 
+
+##### Start of Synthetic Data Generation #####
+def createAlpha(maxAlpha=1):
+    alpha = np.random.rand() * maxAlpha
+    return alpha
+
+def createEta(maxEta=1):
+    eta = np.random.rand() * maxEta
+    return eta
+
+def createBeta(eta, V, K):
+    eta_vector = np.ones((V)) * eta
+    beta = np.random.dirichlet(eta_vector, K)
+    return beta
+
+def createTheta(alpha, K, D):
+    alpha_vector = np.ones((K)) * alpha
+    theta = np.random.dirichlet(alpha_vector, D)
+    return theta
+
+def createZ(theta, D, N, K):
+    Z = np.zeros((D,N,K))
+    for d in range(D):
+        Z[d] = np.random.multinomial(1, theta[d], size=N)
+    return Z
+
+def createW(beta, Z, D, N, V):
+    w = np.zeros((D,N,V))
+    for d in range(D):
+        for n in range(N):
+            z_dn = Z[d,n]
+            k = np.where(z_dn==1)[0][0]
+            w[d,n] = np.random.multinomial(1, beta[k], size=1)
+            
+    w_counts = np.sum(w, axis=1) # D x V, all the entries are the number of words occurred in the document. 
+    return w, w_counts
+
+def createSample(D,N,K,V,maxAlpha=1, maxEta=1):
+    alpha = createAlpha(maxEta)
+    eta = createEta(maxEta)
+    beta = createBeta(eta, V, K)
+    theta = createTheta(alpha, K, D)
+    Z = createZ(theta, D, N, K)
+    w, w_counts = createW(beta, Z, D, N, V)
+    
+    return alpha, eta, beta, theta, Z, w, w_counts
+##### End of Synthetic Data Generation #####
+
 def getDataDimensions(input_data):
     # gets the dimensions of the data tf
     # D Documents, N words
