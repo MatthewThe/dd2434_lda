@@ -5,7 +5,10 @@ from scipy import special
 from sklearn.feature_extraction.text import CountVectorizer
 import os
 from bs4 import BeautifulSoup
-
+from sklearn import datasets, svm
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import accuracy_score
 
 np.random.seed(1)
 
@@ -495,25 +498,120 @@ def plotComplexityDocumentModeling(K, perp):
     plt.show()
 
 
-## Document Classifiaction
-    
-def DocumentClassification(tf, gamma):
-    # Performs SVM for binary classification based on 1) original count data and
-    #  2) per document-topic composition
-    return(accuracy) # accuracy: #Iterations I x 2 (Accuracy of Word features, accuracy of LDA features)
+### Start of document classifiaction ###
+
+# get 8000 documents out of ~21000 documents
+def loadData(folderName, keyword_1, keyword_2):
+    data = []
+    labels_1 = []
+    topic_of_interest_1 = keyword_1
+    labels_2 = []
+    topic_of_interest_2 = keyword_2
+    for file in os.listdir(folderName):
+        if file.endswith('.sgm'):
+            f = open(folderName + '/' + file, 'rb')
+            # print('reutersdata/' + file)
+            filestring = f.read()
+            soup = BeautifulSoup(filestring)
+            contents = soup.findAll('text')
+            for content in contents:
+                data.append(content.text)
+            topics = soup.findAll('topics')
+            for topic in topics:
+                labels_1.append(topic_of_interest_1 in topic.text)
+                labels_2.append(topic_of_interest_2 in topic.text)
+        if len(data) > 7000:
+            break
+    vectorizer = CountVectorizer()
+    tf = vectorizer.fit_transform(data)
+
+    return (tf, labels_1, labels_2)
+
+#tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
+
+# Replace with gamma for topic distribution
+def MockTopicData():
+    gamma_matrix=np.random.rand(8000, 50)
+
+    return (gamma_matrix)
+
+### !!! make sure you have the same documents and labels for comparison of classifications !!!!
+#gamma_matrix = MockTopicData()
+
+# Call labels labels_1 earn, labels_2 grain
+#labels_1_array = np.asarray(labels_1)
+#labels_2_array = np.asarray(labels_2)
 
 
+#Classify documents into binary class
+# Run for EARN vs NOT EARN and GRAIN vs NOT GRAIN, recursively
+def DocumentClassification():
 
-def plotSVMModelAccuracy(accuracy):
-    # Training data - accuracy plot (fig. 10)
-    plt.errorbar(np.arange(0.1,0.35,0.05),np.arange(70, 95, 5), 
-                 yerr = 2, label="Word features", fmt="s--", linewidth=1)
-    plt.errorbar(np.arange(0.1,0.35,0.05),np.arange(95, 70, -5), yerr= 2, label="LDA features", fmt="s-", linewidth=1)
+    # initialize the svm parameters for grid search and run both linear and radial basis function as kernels
+    parameters = {'kernel': ('linear','rbf'), 'C': [1,3,5,7,10], 'gamma':[0.01,0.05,0.10,0.3,0.5]}
+
+    # proportion of test data
+    test_data_size = [0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]
+
+    ## building classifier for low dimension data D(8000) X K(50) (for LDA features)
+    low_dim_acc = []
+    for k in range(0,6):
+        acc_list_low_dim = []
+        for i in test_data_size:
+            X_topic_train, X_topic_test, y_topic_train, y_topic_test = train_test_split(gamma_matrix, labels_1_array, test_size = i, random_state = k)
+            svr = svm.SVC()
+            grid = GridSearchCV(svr, parameters)
+            grid.fit(X_topic_train, y_topic_train)
+            predicted = grid.predict(X_topic_test)
+            acc_list_low_dim.append(accuracy_score(y_topic_test, predicted))
+        low_dim_acc.append(acc_list_low_dim)
+    accuracy_low_dim = np.array(low_dim_acc) * 100
+    mean_stats_low_dim = np.mean(accuracy_low_dim, axis=0)
+    sd_stats_low_dim = np.std(accuracy_low_dim, axis=0)
+    #print (sd_stats_low_dim)
+
+
+    ### building a classifier for high dimension data D(8000) X w (for word feature)
+    high_dim_acc = []
+    for k in range(0,6):
+        acc_list_high_dim = []
+        for i in test_data_size:
+            X_word_train, X_word_test, y_word_train, y_word_test = train_test_split(tf, labels_1_array, test_size = i, random_state = k)
+            svr = svm.SVC()
+            grid = GridSearchCV(svr, parameters)
+            grid.fit(X_word_train, y_word_train)
+            predicted = grid.predict(X_word_test)
+            acc_list_high_dim.append(accuracy_score(y_word_test, predicted))
+        high_dim_acc.append(acc_list_high_dim)
+    accuracy_high_dim = np.array(high_dim_acc) * 100
+    mean_stats_high_dim = np.mean(accuracy_high_dim, axis=0)
+    sd_stats_high_dim = np.std(accuracy_high_dim, axis=0)
+    #print (sd_stats_high_dim)
+
+    return (mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
+
+# Get statistics (mean and standard deviation) for plotting
+#mean_low_dim, sd_low_dim,  mean_high_dim, sd_high_dim = DocumentClassification()
+
+# Training data - accuracy plot (fig. 10)
+def plotSVMModelAccuracy():
+    #scatter plot for LDA features
+    plt.errorbar(np.array([0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]), mean_low_dim,
+                 yerr = sd_low_dim, label="LDA features", fmt="s--", linewidth=1)
+    #scatter plot for word features
+    plt.errorbar(np.array([0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]), mean_high_dim, yerr= sd_high_dim, label="Word features", fmt="s-", linewidth=1)
     plt.rc('axes', labelsize = 15)
+    plt.ylim(70, 100)
+    plt.xlim(0,0.3)
     plt.xlabel('Proportion of data used for training')
     plt.ylabel('Accuracy')
     plt.legend(loc='lower right', shadow=True, fontsize='x-large', prop={'size': 10})
     plt.show()
+
+#plotSVMModelAccuracy()
+
+### End of classificatiob ####    
+
     
 
 
