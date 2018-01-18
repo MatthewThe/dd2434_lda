@@ -1,4 +1,4 @@
-﻿import numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import digamma, polygamma, gammaln 
 from scipy import special
@@ -182,6 +182,67 @@ def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
         Likelihood[d] = E_theta_alpha + E_z_theta + E_beta_eta + E_w_z_beta - E_theta_gamma - E_z_phi - E_beta_lambda
     return(np.sum(Likelihood))
 
+def ComputeDocumentLikelihood(tf, alpha, beta, gamma, phi, Lambda, d):
+    # Computes likelihood of the variational model (eq. 15).
+    # Lambda is the additional hyperparameter for the betas. (smoothed version) 
+
+    Likelihood = np.zeros((D,1))
+    #Hazal's notes, eq. 6
+    E_theta_alpha = 0
+    E_theta_alpha = gammaln(np.sum(alpha*K)) \
+                    - (gammaln(alpha)*K) \
+                    + np.sum([((alpha - 1) \
+                        *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
+                       for i in range(K)])
+
+    #Hazal's notes, eq. 7
+    E_z_theta = 0
+    wd = np.repeat(range(V), tf)
+    for n in range(len(wd)):
+        for r in range(K):
+           E_z_theta += phi[d,n,r] *(digamma(gamma[d,r]) - digamma(np.sum(gamma[d,:])))
+
+    #Hazal's notes, eq. 8
+    E_beta_eta = 0
+    for r in range(K):
+        E_beta_eta += gammaln(eta*V) - V*gammaln(eta)
+        for i in range(V):
+            E_beta_eta += (eta - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+
+    #Hazal's notes, eq. 9
+    E_w_z_beta = 0
+    wd = np.repeat(range(V), tf)
+    for n in range(len(wd)):
+        for r in range(K):
+            for j in range(V):
+                E_w_z_beta += phi[d,n,r]*(digamma(Lambda[r,wd[n]]) - digamma(np.sum(Lambda[r,:])))
+
+    #Hazal's notes, eq. 10
+    E_theta_gamma = 0
+    E_theta_gamma = gammaln(np.sum(gamma[d,:])) \
+                    - np.sum(gammaln(gamma[d,:])) \
+                    + np.sum([((gamma[d,i] - 1) \
+                        *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
+                       for i in range(K)])
+
+    #Hazal's notes, eq. 11
+    E_z_phi = 0
+    wd = np.repeat(range(V), tf)
+    for n in range(len(wd)):
+        for r in range(K):
+            E_z_phi += phi[d,n,r]*np.log(phi[d,n,r])
+
+    #Hazal's notes, eq. 12
+    E_beta_lambda = 0
+    for r in range(K):
+        E_beta_lambda += gammaln(np.sum(Lambda[r,:])) - np.sum(gammaln(Lambda[r,:]))
+        for i in range(V):
+            E_beta_lambda += (Lambda[r,i] - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+
+
+    Likelihood[d] = E_theta_alpha + E_z_theta + E_beta_eta + E_w_z_beta - E_theta_gamma - E_z_phi - E_beta_lambda
+    return(Likelihood[d])
+
 
 def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-4), EstepMaxIterations = 100):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
@@ -237,7 +298,7 @@ def ExpectationPhiGamma(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConver
                 phi[d,n,:] /= sum(phi[d,n,:])
             #for d in range(D):
             gamma[d,:] = alpha + np.sum(phi[d,:,:], axis = 0)
-            newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
+            newLikelihood = ComputeDocumentLikelihood(tf[d], alpha, eta, gamma, phi, Lambda, d)
             #newLikelihood = 0.1
             dlikelihood = abs((newLikelihood - likelihood)/likelihood)
             likelihood = newLikelihood
@@ -408,7 +469,7 @@ def VariationalExpectationMaximizationUnitTest():
     VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
     
   
-VariationalExpectationMaximizationUnitTest()  
+#VariationalExpectationMaximizationUnitTest()  
 # Document modeling
     
 def pWUnseenDocument(pW, K):
