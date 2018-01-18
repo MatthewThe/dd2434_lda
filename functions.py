@@ -97,10 +97,12 @@ def loadData(folderName, keyword_1, keyword_2):
 
 D = 10
 N = 20
-K = 5
-V = 20
-alpha_original, eta_original, _, _, _, _, tf = createSample(D,N,K,V,maxAlpha=5, maxEta=10)
+K = 2
+V = 10
+alpha_original, eta_original, _, theta_original, _, _, tf = createSample(D,N,K,V,maxAlpha=5, maxEta=10)
 print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
+print("*** Original theta ***")
+print(theta_original)
 # Initialize parameters
     
 # tf: input_data
@@ -142,9 +144,9 @@ def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
         #Hazal's notes, eq. 8
         E_beta_eta = 0
         for r in range(K):
+            E_beta_eta += gammaln(eta*V) - V*gammaln(eta)
             for i in range(V):
-                E_beta_eta += gammaln(eta*V) - V*gammaln(eta) \
-                              + (eta - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+                 E_beta_eta += (eta - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
 
         #Hazal's notes, eq. 9
         E_w_z_beta = 0
@@ -213,7 +215,7 @@ def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeTh
         
         newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
         dlikelihood = abs((newLikelihood - likelihood)/likelihood)
-        print(likelihood)
+        print(newLikelihood)
         likelihood = newLikelihood
         if(dlikelihood < EstepConvergeThreshold):
             print('E-step converged after %d iterations' %iterations)
@@ -242,6 +244,7 @@ def ExpectationPhiGamma(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConver
             #print(likelihood)
             if(dlikelihood < EstepConvergeThreshold):
                 print('E-step phi gamma converged after %d iterations' %iterations)
+                print(likelihood)
                 converged = True
     
     return(phi, gamma)   
@@ -385,6 +388,8 @@ def VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lamb
         dlikelihood = abs((newLikelihood - likelihood)/likelihood)
         likelihood = newLikelihood
         print(ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda))
+        print("gamma")
+        print(gamma)
         if(dlikelihood < EstepConvergeThreshold):
             print('EM-step converged after %d iterations' %iterations)
             converged = True
@@ -392,10 +397,13 @@ def VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lamb
     
 def VariationalExpectationMaximizationUnitTest():
     alpha = np.random.rand()
-    gamma = np.ones((D,K))
+    gamma = np.random.rand(D,K)
     eta = np.random.rand() 
-    Lambda = np.ones((K,V))
+    Lambda = np.random.rand(K,V)
     phi = np.random.rand(D,N,K)
+    for d in range(D):
+      for n in range(N):
+        phi[d,n,:] /= np.sum(phi[d,n,:])
     
     VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
     
