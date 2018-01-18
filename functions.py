@@ -6,6 +6,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 import os
 from bs4 import BeautifulSoup
 
+
+np.random.seed(1)
+
 def getDataDimensions(input_data):
     # gets the dimensions of the data tf
     # D Documents, N words
@@ -25,7 +28,7 @@ def loadData(folderName, keyword_1, keyword_2):
             f = open(folderName + '/' + file,'rb')
             #print('reutersdata/' + file)
             filestring = f.read()
-            soup = BeautifulSoup(filestring)
+            soup = (filestring)
             contents = soup.findAll('text')
             for content in contents:
                 data.append(content.text)
@@ -39,7 +42,7 @@ def loadData(folderName, keyword_1, keyword_2):
     return(tf, labels_1, labels_2)
 
 #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
-tf = loadMockData(50, 100)
+tf = loadMockData(10, 10)
 
 # Initialize parameters
     
@@ -48,15 +51,14 @@ K = 10 # Number of Topics
 D = getDataDimensions(tf)[0] # Number of Documents
 V = getDataDimensions(tf)[1] # Number of words in dictionary
 N = np.max(np.sum(tf, axis = 1))
-beta_init = np.zeros((D, N)) # betas
-alpha_init = [50.0/K] * K # alphas
-gamma_init = [alpha_init[0] + float(N)/K] * K # variational hypermeter of topic distribution
-phi_init = np.full((K, N), 1./K) # variational hypermeter of topics
-eta = 0.001 # fixed hyperparameter for the smoothed version
-Lambda_init = np.zeros((D, N)) # variational hyperparameter for smoothed version
-likelihood = 0 # Likelihood to be minimized
-EstepConvergeThreshold = 10**(-5)
-EstepMaxIterations = 10 
+beta_init = np.zeros((D, N)) # beta
+alpha_init = [50.0/K] * K # alpha
+gamma_init = [alpha_init[0] + float(N)/K] * K # gamma
+phi_init = np.full((K, N), 1./K) # phi
+eta = 0.001 # eta
+Lambda_init = np.zeros((D, N)) # lambda
+loglikelihoodVEM = 0 # Likelihood to be minimized
+
 
 
 ## Functions
@@ -69,11 +71,9 @@ def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
     for d in range(D):
         #Hazal's notes, eq. 6
         E_theta_alpha = 0
-        E_theta_alpha = gammaln(np.sum(alpha[d,:])) \
-                        - np.sum(gammaln(alpha[d,:])) \
-                        + np.sum([((alpha[d] - 1) \
-                            *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
-                           for i in range(K)])
+        E_theta_alpha = gammaln(alpha*K) \
+                        - K * (gammaln(alpha)) \
+                        + (alpha-1) * computeSufficientStats(D, K, gamma)
 
         #Hazal's notes, eq. 7
         E_z_theta = 0
@@ -124,7 +124,7 @@ def ComputeLikelihood(tf, alpha, beta, gamma, phi, Lambda):
     return(np.sum(Likelihood))
 
 
-def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda):
+def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-4), EstepMaxIterations = 100):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
     #
     # k: topic (N.B.: r in Hazal's notes)
@@ -137,46 +137,61 @@ def ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda):
     # tf: [document, word in dictionary]
     # α: [document], prior topic probability
     # eta: [topic], prior word probability 
+
+    iterations = 0
     likelihood = 10**(-10) 
     converged = False
-    iterations = 0
     while(not(converged)):
         if(iterations > EstepMaxIterations):
             raise ValueError('E-step not converged after %d iterations' %iterations)
         
         iterations += 1
-    
+        phi, gamma = ExpectationPhiGamma(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-5), EstepMaxIterations = 10)
+        Lambda[:,:] = eta
         for d in range(D):
+            wd = np.repeat(range(V), tf[d,:])
+            for k in range(K):
+                for n in range(len(wd)):        
+                    Lambda[k,wd[n]] += phi[d,n,k]
+        
+        newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
+        dlikelihood = abs((newLikelihood - likelihood)/likelihood)
+        print(likelihood)
+        likelihood = newLikelihood
+        if(dlikelihood < EstepConvergeThreshold):
+            print('E-step converged after %d iterations' %iterations)
+            converged = True
+    return(phi, gamma, Lambda, likelihood)
+
+
+def ExpectationPhiGamma(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-5), EstepMaxIterations = 10):
+    for d in range(D):
+        likelihood = 10**(-10) 
+        converged = False
+        iterations = 0
+        while(not converged):
+            iterations += 1
             wd = np.repeat(range(V), tf[d,:])
             for n in range(len(wd)):
                 for k in range(K):
                     phi[d,n,k] = np.exp(digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:])))
                 phi[d,n,:] /= sum(phi[d,n,:])
+            #for d in range(D):
+            gamma[d,:] = alpha + np.sum(phi[d,:,:], axis = 0)
+            newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
+            #newLikelihood = 0.1
+            dlikelihood = abs((newLikelihood - likelihood)/likelihood)
+            likelihood = newLikelihood
+            #print(likelihood)
+            if(dlikelihood < EstepConvergeThreshold):
+                print('E-step phi gamma converged after %d iterations' %iterations)
+                converged = True
     
-        for d in range(D):
-            gamma[d,:] = alpha[d] + np.sum(phi[d,:,:], axis = 0)
-        
-        # newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
-        newLikelihood = 0.1
-        dlikelihood = (newLikelihood - likelihood)/likelihood
-        likelihood = newLikelihood
-        if(dlikelihood < EstepConvergeThreshold):
-            print('E-step converged after %d iterations' %iterations)
-            break
-        
-    Lambda[k,:] = eta[k]
-    for d in range(D):
-        wd = np.repeat(range(V), tf[d,:])
-        for k in range(K):
-            for n in range(len(wd)):        
-                Lambda[k,wd[n]] += phi[d,n,k]
-                
-    return(phi, gamma, Lambda, likelihood)
-
+    return(phi, gamma)   
 
 def ExpectationStepUnitTest():
-    alpha = np.random.rand(D,1)
-    eta = np.random.rand(K,1)
+    alpha = np.random.rand()
+    eta = np.random.rand()
     gamma = np.random.rand(D,K)
     phi = np.random.rand(D,N,K)
     Lambda = np.random.rand(K,V)
@@ -184,7 +199,7 @@ def ExpectationStepUnitTest():
     phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
     phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
 
-ExpectationStepUnitTest()
+#ExpectationStepUnitTest()
 
 
 ### Start of Maximization Part ###
@@ -225,11 +240,11 @@ def moveAlpha(alpha, gradient, hessian):
     # The logarithmic scale is taken from Colorado Reed paper.
     invHg = gradient / (hessian * alpha + gradient)
     
-    log_alpha_new = np.log(alpha) - invHg
-    alpha_new = np.exp(log_alpha_new)
+    #log_alpha_new = np.log(alpha) - invHg
+    #alpha_new = np.exp(log_alpha_new)
     
     # OR!!
-    # alpha_new = alpha - invHg
+    alpha_new = alpha - invHg
     
     return alpha_new
 
@@ -266,11 +281,11 @@ def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
         
         if epoch==maxIter:
             isConverged = True
-            #print("\nConverged: max iteration\n")
+            print("\nConverged: max iteration\n")
         else:
             if epoch>1 and np.absolute(gradient)<tol:
                 isConverged = True
-                #print("\nConverged: gradient close to zero at iteration: %d\n" % epoch)
+                print("\nConverged: gradient close to zero at iteration: %d\n" % epoch)
         
     return alpha, bounds
 
@@ -278,7 +293,8 @@ def MaximizationStep(alpha, gamma, eta, Lambda):
     # Returns updated alpha and eta
     alpha, _ = updateAlpha(alpha, gamma)
     eta, _ = updateAlpha(eta, Lambda)
-    
+    print("alpha: %.10f", alpha)
+    print("eta: %.10f", eta)
     return(alpha, eta)
 
 def MaximizationStepUnitTest():
@@ -293,23 +309,41 @@ def MaximizationStepUnitTest():
     
     alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
     
-MaximizationStepUnitTest()
+    MaximizationStepUnitTest()
 
 ### End of Maximization Part ###
 
 
-def VariationalExpectationMaximization( ):
+def VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-5), EstepMaxIterations = 10):
     # Calculates variational parameters gamma, phi, and lambda iteratively until convergence
-    
-    phi, gamma, Lambda, likelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
-    
-    alpha, eta = MaximizationStep(D, V, K, alpha, gamma, phi, Lambda, eta, likelihood)
-    
+    likelihood = 10**(-10) 
+    converged = False
+    iterations = 0
+    while(not converged):
+        iterations += 1
+        phi, gamma, Lambda, newLikelihood = ExpectationStep(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
+        print(newLikelihood)
+        alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
+        
+        dlikelihood = abs((newLikelihood - likelihood)/likelihood)
+        likelihood = newLikelihood
+        print(ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda))
+        if(dlikelihood < EstepConvergeThreshold):
+            print('EM-step converged after %d iterations' %iterations)
+            converged = True
     return(gamma, Lambda, phi)
     
+def VariationalExpectationMaximizationUnitTest():
+    alpha = np.random.rand()
+    gamma = np.ones((D,K))
+    eta = np.random.rand() 
+    Lambda = np.ones((K,V))
+    phi = np.random.rand(D,N,K)
     
+    VariationalExpectationMaximization(tf, K, D, N, alpha, eta, gamma, phi, Lambda)
     
-    
+  
+VariationalExpectationMaximizationUnitTest()  
 # Document modeling
     
 def pWUnseenDocument(pW, K):
