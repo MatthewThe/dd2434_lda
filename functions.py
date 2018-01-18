@@ -33,6 +33,7 @@ def createZ(theta, D, N, K):
     Z = np.zeros((D,N,K))
     for d in range(D):
         Z[d] = np.random.multinomial(1, theta[d], size=N)
+    Z = Z.astype(int)
     return Z
 
 def createW(beta, Z, D, N, V):
@@ -44,6 +45,8 @@ def createW(beta, Z, D, N, V):
             w[d,n] = np.random.multinomial(1, beta[k], size=1)
             
     w_counts = np.sum(w, axis=1) # D x V, all the entries are the number of words occurred in the document. 
+    w = w.astype(int)
+    w_counts = w_counts.astype(int)    
     return w, w_counts
 
 def createSample(D,N,K,V,maxAlpha=1, maxEta=1):
@@ -90,8 +93,14 @@ def loadData(folderName, keyword_1, keyword_2):
     return(tf, labels_1, labels_2)
 
 #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
-tf = loadMockData(10, 10)
+#tf = loadMockData(10, 10)
 
+D = 10
+N = 20
+K = 5
+V = 20
+alpha_original, eta_original, _, _, _, _, tf = createSample(D,N,K,V,maxAlpha=5, maxEta=10)
+print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
 # Initialize parameters
     
 # tf: input_data
