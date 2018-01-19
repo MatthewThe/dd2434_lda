@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import digamma, polygamma, gammaln 
 from scipy import special
+from scipy.optimize import minimize
 from sklearn.feature_extraction.text import CountVectorizer
 import os
 from bs4 import BeautifulSoup
@@ -320,7 +321,7 @@ def computeSufficientDocumentStats(d, K, gamma):
 def computeL(D, K, alpha, stats):
     # Given the parameter (alpha or eta) and the sufficient statistics, this function calculates the lower bound.
     lik = D * np.log( special.gamma(K*alpha) ) 
-    lik = lik - D * K * np.log(alpha)
+    lik = lik - D * K * np.log( special.gamma(alpha) )
     lik = lik + (alpha - 1) * stats
     return lik
 
@@ -342,14 +343,35 @@ def moveAlpha(alpha, gradient, hessian):
     # The logarithmic scale is taken from Colorado Reed paper.
     invHg = gradient / (hessian * alpha + gradient)
     
-    log_alpha_new = np.log(alpha) - invHg
-    alpha_new = np.exp(log_alpha_new)
+    #log_alpha_new = np.log(alpha) - invHg
+    #alpha_new = np.exp(log_alpha_new)
     
     # OR!!
-    #alpha_new = alpha - invHg
+    alpha_new = alpha - invHg
     
     return alpha_new
 
+def computeNegL(alpha,D,K,stats):
+    # This function calculates the Negative Log Likelihood of Alpha related terms
+    return - computeL(D, K, alpha, stats)
+    
+def updateAlpha_Scipy(alpha, gamma):
+    # This function minimizes the Negative Log Likelihood
+    D, K = gamma.shape
+    stats = computeSufficientStats(D, K, gamma)
+
+    if np.isnan(alpha):
+        print("ALPHA WAS NAN")
+        alpha = 10
+    else:   
+        negBound = computeNegL(alpha,D,K,stats)
+        res = minimize(computeNegL, alpha, args=(D,K,stats))
+
+        newnegBound = computeNegL(res.x[0],D,K,stats)
+        #print("\tAlpha:%.5f. negL: %.5f. New Alpha: %.5f. New-negL:%.5f" % (alpha,negBound,res.x[0], newnegBound))
+        alpha = res.x[0]
+        
+    return alpha
 
 def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
     # This function updates alpha OR eta parameter. 
@@ -367,45 +389,76 @@ def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
     
     stats = computeSufficientStats(D, K, gamma)
     
+    init_alpha = alpha
+    init_L = computeL(D, K, alpha, stats)
+    
     while(not isConverged):
-        bound = computeL(D, K, alpha, stats)
-        gradient = computeGradient(D, K, alpha, stats)
-        hessian = computeHessian(D, K, alpha)
-
-        print("Epoch: %d" %epoch)
-        print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
-        alpha = moveAlpha(alpha, gradient, hessian)
         
-        print("\tNew Value: %.5f" % (alpha))
-        
-        bounds.append(bound)
-        epoch = epoch + 1
-        
-        if epoch==maxIter:
-            isConverged = True
-            print("\nConverged: max iteration\n")
+        if np.isnan(alpha):
+            print("ALPHA WAS NAN. Re-initializing")
+            alpha = 10
         else:
-            if epoch>1 and np.absolute(gradient)<tol:
+            bound = computeL(D, K, alpha, stats)
+            
+            if np.isinf(bound) or np.isnan(bound):
+                print("Lower bound Problem (INF or NAN)")
+                print("alpha")
+                print(alpha)
+                print("bound")
+                print(bound)
+                print("stats")
+                print(stats)
+                print("gamma")
+                print(gamma)
+                sys.exit()
+                
+            gradient = computeGradient(D, K, alpha, stats)
+            hessian = computeHessian(D, K, alpha)
+    
+            #print("Epoch: %d" %epoch)
+            #print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
+            alpha = moveAlpha(alpha, gradient, hessian)
+            
+            #print("New likelihood:")
+            #print(newLikelihood)
+            #print("\tNew Value: %.5f" % (alpha))
+            
+            bounds.append(bound)
+            epoch = epoch + 1
+            
+            if epoch==maxIter:
                 isConverged = True
-                print("\nConverged: gradient close to zero at iteration: %d\n" % epoch)
-        
-    return alpha, bounds
+                print("\t\tConverged: max iteration")
+            else:
+                if epoch>1 and np.absolute(gradient)<tol:
+                    isConverged = True
+                    print("\t\tConverged: gradient close to zero at iteration: %d" % epoch)
+                    
+            #if(isConverged):
+            #    print("\tAlpha:%.5f. L:%.5f. New Alpha:%.5f. newL: %.5f. " % (init_alpha, init_L, alpha,computeL(D, K, alpha, stats)))
+    
+    return alpha
 
 def MaximizationStep(alpha, gamma, eta, Lambda):
     # Returns updated alpha and eta
-    alpha, _ = updateAlpha(alpha, gamma)
-    eta, _ = updateAlpha(eta, Lambda)
-    print("alpha: %.10f" % alpha)
-    print("eta: %.10f" % eta)
-    #alpha = alpha_original
-    #eta = eta_original
+
+    # print("\tM-Step")
+
+    #gamma = np.random.rand(D,K) * 10 +10    
+    
+    #alpha = updateAlpha(alpha, gamma)
+    alpha = updateAlpha_Scipy(alpha, gamma)
+    
+    #eta  = updateAlpha(eta, Lambda)
+    #eta = updateAlpha_Scipy(eta, Lambda)
+    
     return(alpha, eta)
 
 def MaximizationStepUnitTest():
     alpha = np.random.rand()
-    gamma = np.ones((D,K))
+    gamma = np.random.rand(D,K)
     eta = np.random.rand() 
-    Lambda = np.ones((K,V))
+    Lambda = np.random.rand(K,V)
     
     alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
 
@@ -421,16 +474,19 @@ def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, Estep
         iterations += 1
         phi, gamma, Lambda, newLikelihood = ExpectationStep(tf, alpha, eta, gamma, phi, Lambda)
         print(newLikelihood)
-        print("gamma")
-        print(gamma)
+        #print("gamma")
+        #print(gamma)
         
+        print("\tM-Step")
+        print("\t\tAlpha:%.5f. Eta: %.5f. Complete Likelihood: %.5f." % (alpha,eta,ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)))
         alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
+        print("\t\tNew Alpha:%.5f. New Eta: %.5f. New Complete Likelihood: %.5f. " % (alpha,eta,ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)))
         
         dlikelihood = abs((newLikelihood - likelihood)/likelihood)
         likelihood = newLikelihood
         print(ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda))
-        print("gamma")
-        print(gamma)
+        #print("gamma")
+        #print(gamma)
         if(dlikelihood < EstepConvergeThreshold):
             print('EM-step converged after %d iterations' %iterations)
             converged = True
