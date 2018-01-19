@@ -3,6 +3,7 @@
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.sparse import csr_matrix
 from scipy.special import digamma, polygamma, gammaln 
 from scipy import special
 from scipy.optimize import minimize
@@ -24,7 +25,8 @@ def main(argv):
     N = 10
     K = 2
     V = 5
-    alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSample(D,N,K,V,maxAlpha=1, maxEta=1)
+    alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1)
+    tf = tf.toarray()    
     print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
     print("*** Original theta ***")
     print(theta_original)
@@ -119,6 +121,40 @@ def createSample(D,N,K,V,maxAlpha=1, maxEta=1):
     w, w_counts = createW(beta, Z, D, N, V)
     
     return alpha, eta, beta, theta, Z, w, w_counts
+    
+    
+def createZNew(theta, D, N):
+    Z = np.zeros((D,N))
+    for d in range(D):
+        temp = np.random.multinomial(1, theta[d], size=N)
+        topicLabels = np.where(temp==1)[1]
+        Z[d] = topicLabels
+    Z = Z.astype(int)
+    return Z
+
+def createWNew(beta, Z, D, V, K):
+    w = csr_matrix((D, V), dtype=np.int64)
+    for d in range(D):  
+        for k in range(K):
+            kLabeledWords = np.where(Z[d]==k)[0] 
+            count = len(kLabeledWords)
+            
+            temp = np.random.multinomial(1, beta[k], size=count)
+            marg = np.sum(temp, axis=0)
+            
+            w[d,:] = w[d,:] +  marg
+    return w
+
+def createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1):
+    alpha = createAlpha(maxEta)
+    eta = createEta(maxEta)
+    beta = createBeta(eta, V, K)
+    theta = createTheta(alpha, K, D)
+    Z = createZNew(theta, D, N)
+    w = createWNew(beta, Z, D, V, K)
+    
+    return alpha, eta, beta, theta, Z, w, w
+    
 ##### End of Synthetic Data Generation #####
 
 def getDataDimensions(input_data):
