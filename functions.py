@@ -20,17 +20,21 @@ def main(argv):
     #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
     #tf = loadMockData(10, 10)
 
-    D = 100
+    D = 50
     N = 10
     K = 2
-    V = 10
-    alpha_original, eta_original, beta_original, theta_original, _, _, tf = createSample(D,N,K,V,maxAlpha=5, maxEta=10)
+    V = 5
+    alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSample(D,N,K,V,maxAlpha=1, maxEta=1)
     print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
     print("*** Original theta ***")
     print(theta_original)
     print("*** Original beta ***")
     print(beta_original)
+    print("*** Original Z ***")
+    print(np.sum(Z_original, axis = 1))
     # Initialize parameters
+    
+    #tf = loadSimpleData()
         
     # tf: input_data
     #K = 10 # Number of Topics
@@ -46,13 +50,25 @@ def main(argv):
 
     #ExpectationStepUnitTest()
     #MaximizationStepUnitTest()
-    VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
+    #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
+    alpha = 5.0 / K
+    gamma = np.random.rand(D,K)
+    eta = 5.0 # np.random.rand() 
+    Lambda = np.random.rand(K,V)
+    phi = np.random.rand(D,N,K)
+    for d in range(D):
+        for n in range(N):
+            phi[d,n,:] /= np.sum(phi[d,n,:])
+    
+    gamma, Lambda, phi = VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda) 
     
     print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
     print("*** Original theta ***")
     print(theta_original)
     print("\n*** Original beta ***")
     print(beta_original)
+    print("*** Original Z vs VEM gamma ***")
+    print(np.concatenate((np.sum(Z_original, axis = 1), gamma), axis = 1))
 
 
 ##### Start of Synthetic Data Generation #####
@@ -95,7 +111,7 @@ def createW(beta, Z, D, N, V):
     return w, w_counts
 
 def createSample(D,N,K,V,maxAlpha=1, maxEta=1):
-    alpha = createAlpha(maxEta)
+    alpha = createAlpha(maxAlpha)
     eta = createEta(maxEta)
     beta = createBeta(eta, V, K)
     theta = createTheta(alpha, K, D)
@@ -112,6 +128,10 @@ def getDataDimensions(input_data):
 
 def loadMockData(D,V,max_repeats=5):
     return np.random.randint(max_repeats, size=(D,V))
+
+
+def loadSimpleData():
+    return np.array([[9,1,9],[1,9,1],[9,1,9],[10,10,10],[5,5,11]])
 
 def loadData(folderName, keyword_1, keyword_2):
     data = []
@@ -243,7 +263,7 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
         if newLikelihood < likelihood:
             print('WARNING: E-step lower bound decreased')
             print(likelihood, newLikelihood)
-            sys.exit()
+            #sys.exit()
         likelihood = newLikelihood
         if(dlikelihood < EstepConvergeThreshold):
             print('E-step converged after %d iterations' %iterations)
@@ -267,7 +287,7 @@ def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThresho
                     phi[d,n,k] = np.exp(digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:])))
                 phi[d,n,:] /= np.sum(phi[d,n,:])
             #for d in range(D):
-            gamma[d,:] = alpha + np.sum(phi[d,:,:], axis = 0)
+            gamma[d,:] = alpha + np.sum(phi[d,:len(wd),:], axis = 0)
             newLikelihood = ComputeDocumentLikelihood(tf[d], alpha, eta, gamma, phi, Lambda, d)
             #newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
             #newLikelihood = 0.1
@@ -343,11 +363,11 @@ def moveAlpha(alpha, gradient, hessian):
     # The logarithmic scale is taken from Colorado Reed paper.
     invHg = gradient / (hessian * alpha + gradient)
     
-    #log_alpha_new = np.log(alpha) - invHg
-    #alpha_new = np.exp(log_alpha_new)
+    log_alpha_new = np.log(alpha) - invHg
+    alpha_new = np.exp(log_alpha_new)
     
     # OR!!
-    alpha_new = alpha - invHg
+    #alpha_new = alpha - invHg
     
     return alpha_new
 
@@ -415,8 +435,8 @@ def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
             gradient = computeGradient(D, K, alpha, stats)
             hessian = computeHessian(D, K, alpha)
     
-            #print("Epoch: %d" %epoch)
-            #print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
+            print("Epoch: %d" %epoch)
+            print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
             alpha = moveAlpha(alpha, gradient, hessian)
             
             #print("New likelihood:")
@@ -446,10 +466,10 @@ def MaximizationStep(alpha, gamma, eta, Lambda):
 
     #gamma = np.random.rand(D,K) * 10 +10    
     
-    #alpha = updateAlpha(alpha, gamma)
-    alpha = updateAlpha_Scipy(alpha, gamma)
+    alpha = updateAlpha(alpha, gamma)
+    #alpha = updateAlpha_Scipy(alpha, gamma)
     
-    #eta  = updateAlpha(eta, Lambda)
+    eta  = updateAlpha(eta, Lambda)
     #eta = updateAlpha_Scipy(eta, Lambda)
     
     return(alpha, eta)
@@ -465,7 +485,7 @@ def MaximizationStepUnitTest():
 ### End of Maximization Part ###
 
 
-def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 10**(-5), EstepMaxIterations = 10):
+def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-6, EstepMaxIterations = 100):
     # Calculates variational parameters gamma, phi, and lambda iteratively until convergence
     likelihood = 10**(-10) 
     converged = False
@@ -493,9 +513,9 @@ def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, Estep
     return(gamma, Lambda, phi)
     
 def VariationalExpectationMaximizationUnitTest(tf, D, K, V, N):
-    alpha = 50.0 / K
+    alpha = 5.0 / K
     gamma = np.random.rand(D,K)
-    eta = np.random.rand() 
+    eta = 5.0 # np.random.rand() 
     Lambda = np.random.rand(K,V)
     phi = np.random.rand(D,N,K)
     for d in range(D):
