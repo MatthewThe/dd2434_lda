@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.sparse import csr_matrix
 from scipy.special import digamma, polygamma, gammaln 
-from scipy import special
+from scipy import special, misc
 from scipy.optimize import minimize
 from sklearn.feature_extraction.text import CountVectorizer
 import os
@@ -20,23 +20,29 @@ def main(argv):
     np.random.seed(1)
     #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
     #tf = loadMockData(10, 10)
-
-    D = 50
-    N = 10
-    K = 2
-    V = 5
-    alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1)
-    tf = tf.toarray()    
-    print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
-    print("*** Original theta ***")
-    print(theta_original)
-    print("*** Original beta ***")
-    print(beta_original)
-    print("*** Original Z ***")
-    print(np.sum(Z_original, axis = 1))
+    K = 3
+    
+    generatedData = True
+    if generatedData:
+        D = 50
+        N = 15
+        V = 30
+        alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1)
+        #tf = tf.toarray()
+        #print tf
+        print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
+        print("*** Original theta ***")
+        print(theta_original)
+        print("*** Original beta ***")
+        print(beta_original)
+    else:
+        tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
+        tf = tf[:1000,:]
+        #tf = loadSimpleData()
+        #tf = csr_matrix(tf)
     # Initialize parameters
     
-    #tf = loadSimpleData()
+    
         
     # tf: input_data
     #K = 10 # Number of Topics
@@ -54,23 +60,23 @@ def main(argv):
     #MaximizationStepUnitTest()
     #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
     alpha = 5.0 / K
-    gamma = np.random.rand(D,K)
-    eta = 5.0 # np.random.rand() 
-    Lambda = np.random.rand(K,V)
-    phi = np.random.rand(D,N,K)
-    for d in range(D):
-        for n in range(N):
-            phi[d,n,:] /= np.sum(phi[d,n,:])
+    gamma = np.ones((D,K)) * (alpha + float(N)/K)
+    eta = 1.0 # np.random.rand() 
+    Lambda = np.random.rand(K,V) * 0.5 + 0.5
+    phi = np.ones((D,N,K)) * (1./ K)
     
     gamma, Lambda, phi = VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda) 
     
-    print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
-    print("*** Original theta ***")
-    print(theta_original)
-    print("\n*** Original beta ***")
-    print(beta_original)
-    print("*** Original Z vs VEM gamma ***")
-    print(np.concatenate((np.sum(Z_original, axis = 1), gamma), axis = 1))
+    print gamma
+    if generatedData:
+        print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
+        print("\n*** Original beta ***")
+        print(beta_original)
+        print("*** Original theta vs VEM gamma ***")
+        compareGamma = gamma
+        for k in range(K):
+            compareGamma = np.concatenate((compareGamma, np.sum(Z_original == k, axis = 1)[np.newaxis,:].T), axis = 1)
+        print(compareGamma)
 
 
 ##### Start of Synthetic Data Generation #####
@@ -143,10 +149,11 @@ def createWNew(beta, Z, D, V, K):
             marg = np.sum(temp, axis=0)
             
             w[d,:] = w[d,:] +  marg
+    w.eliminate_zeros()
     return w
 
 def createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1):
-    alpha = createAlpha(maxEta)
+    alpha = createAlpha(maxAlpha)
     eta = createEta(maxEta)
     beta = createBeta(eta, V, K)
     theta = createTheta(alpha, K, D)
@@ -228,7 +235,7 @@ def ComputeDocumentLikelihood(tf, alpha, eta, gamma, phi, Lambda, d):
     
     K, V = Lambda.shape
     
-    wd = np.repeat(range(V), tf)
+    wd = wordCountToFlatArray(tf)
     
     #Hazal's notes, eq. 6
     E_theta_alpha = gammaln(alpha*K) - K * gammaln(alpha) \
@@ -259,7 +266,10 @@ def ComputeDocumentLikelihood(tf, alpha, eta, gamma, phi, Lambda, d):
     Likelihood = E_theta_alpha + E_z_theta + E_w_z_beta - E_theta_gamma - E_z_phi
     return(Likelihood)
 
-
+def wordCountToFlatArray(tf):
+    return np.repeat(tf.indices, tf.data)
+    #return np.repeat(range(40), tf)
+    
 def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 100):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
     #
@@ -285,11 +295,11 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
             raise ValueError('E-step not converged after %d iterations' %iterations)
         
         iterations += 1
-        phi, gamma = ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 10)
+        phi, gamma = ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda)
         #print("before", ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda), Lambda)
         Lambda[:,:] = eta
         for d in range(D):
-            wd = np.repeat(range(V), tf[d,:])
+            wd = wordCountToFlatArray(tf[d,:])
             for k in range(K):
                 for n in range(len(wd)):        
                     Lambda[k,wd[n]] += phi[d,n,k]
@@ -307,7 +317,7 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
     return(phi, gamma, Lambda, likelihood)
 
 
-def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 10):
+def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 50):
     K, V = Lambda.shape
     D, N = tf.shape
     
@@ -316,17 +326,18 @@ def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThresho
         converged = False
         iterations = 0
         while(not converged):
+            if(iterations > EstepMaxIterations):
+                raise ValueError('E-step phi gamma not converged after %d iterations' %iterations)
             iterations += 1
-            wd = np.repeat(range(V), tf[d,:])
+            wd = wordCountToFlatArray(tf[d,:])
             for n in range(len(wd)):
                 for k in range(K):
-                    phi[d,n,k] = np.exp(digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:])))
-                phi[d,n,:] /= np.sum(phi[d,n,:])
-            #for d in range(D):
+                    phi[d,n,k] = digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:]))
+                    #if phi[d,n,k] < -200:
+                    #    print phi[d,n,:], wd[n], Lambda[k,wd[n]]
+                phi[d,n,:] = np.exp(phi[d,n,:] - misc.logsumexp(phi[d,n,:]))
             gamma[d,:] = alpha + np.sum(phi[d,:len(wd),:], axis = 0)
             newLikelihood = ComputeDocumentLikelihood(tf[d], alpha, eta, gamma, phi, Lambda, d)
-            #newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
-            #newLikelihood = 0.1
             dlikelihood = abs((newLikelihood - likelihood)/likelihood)
             if newLikelihood < likelihood:
                 print('WARNING: E-step phi gamma lower bound decreased')
@@ -471,8 +482,8 @@ def updateAlpha(alpha, gamma, maxIter=100, tol=0.0001):
             gradient = computeGradient(D, K, alpha, stats)
             hessian = computeHessian(D, K, alpha)
     
-            print("Epoch: %d" %epoch)
-            print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
+            #print("Epoch: %d" %epoch)
+            #print("\tValue:%.5f. L: %.5f. Gradient: %.5f. Hessian: %.5f" % (alpha,bound,gradient,hessian))
             alpha = moveAlpha(alpha, gradient, hessian)
             
             #print("New likelihood:")
@@ -599,7 +610,7 @@ def loadData(folderName, keyword_1, keyword_2):
             f = open(folderName + '/' + file, 'rb')
             # print('reutersdata/' + file)
             filestring = f.read()
-            soup = BeautifulSoup(filestring)
+            soup = BeautifulSoup(filestring, 'lxml')
             contents = soup.findAll('text')
             for content in contents:
                 data.append(content.text)
