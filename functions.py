@@ -13,6 +13,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 import os
 from bs4 import BeautifulSoup
 
+import zipfile
+import os.path
+
 from sklearn import datasets, svm
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
@@ -43,10 +46,10 @@ def main(argv):
         #tf = csr_matrix(tf)
     #else:
     #    filename = "data_CNA_notna.txt"
-    #    tf = loadCancerDataPosNeg(filename) or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
+    #    tf = loadCancerDataPosNeg(filename) # or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
     
     # Initialize parameters
-        
+
     # tf: input_data
     #K = 10 # Number of Topics
     D = getDataDimensions(tf)[0] # Number of Documents
@@ -182,7 +185,13 @@ def loadCancerDataBinary(filename):
 #
 # filename = "data_CNA_notna.txt"
 # tf = loadCancerDataBinary(filename)
-    with open(filename) as infile:
+    filepath = "CancerData/" + filename
+    status = os.path.isfile(filepath) 
+    if(not status):
+        zipp = zipfile.ZipFile("./data_CNA_notna.txt.zip")
+        zipp.extractall("CancerData")
+        
+    with open(filepath) as infile:
         # Read header line
         first_line = infile.readline()
 
@@ -221,7 +230,14 @@ def loadCancerDataAbsolute(filename):
 #
 # filename = "data_CNA_notna.txt"
 # tf = loadCancerDataAbsolute(filename)
-    with open(filename) as infile:
+
+    filepath = "CancerData/" + filename
+    status = os.path.isfile(filepath) 
+    if(not status):
+        zipp = zipfile.ZipFile("./data_CNA_notna.txt.zip")
+        zipp.extractall("CancerData")
+
+    with open(filepath) as infile:
         # Read header line
         first_line = infile.readline()
 
@@ -263,7 +279,13 @@ def loadCancerDataPosNeg(filename):
 #
 # filename = "data_CNA_notna.txt"
 # tf = loadCancerDataPosNeg(filename)
-    with open(filename) as infile:
+    filepath = "CancerData/" + filename
+    status = os.path.isfile(filepath) 
+    if(not status):
+        zipp = zipfile.ZipFile("./data_CNA_notna.txt.zip")
+        zipp.extractall("CancerData")
+
+    with open(filepath) as infile:
         # Read header line
         first_line = infile.readline()
 
