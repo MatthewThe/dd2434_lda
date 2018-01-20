@@ -41,9 +41,11 @@ def main(argv):
         tf, labels_1, labels_2, topic_texts = loadData('reutersdata', 'earn', 'grain')
         #tf = loadSimpleData()
         #tf = csr_matrix(tf)
+    #else:
+    #    filename = "data_CNA_notna.txt"
+    #    tf = loadCancerDataPosNeg(filename) or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
+    
     # Initialize parameters
-    
-    
         
     # tf: input_data
     #K = 10 # Number of Topics
@@ -170,6 +172,136 @@ def createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1):
     return alpha, eta, beta, theta, Z, w, w
     
 ##### End of Synthetic Data Generation #####
+
+##### Start of Cancer Data Generation #####
+
+def loadCancerDataBinary(filename):
+# This function returns a binary (DxV) sparse matrix 
+# where each row is a patient, each column is a gene
+# and each entry represents an event (entry is 1 if copy number is (-2,-1,1 or 2)).
+#
+# filename = "data_CNA_notna.txt"
+# tf = loadCancerDataBinary(filename)
+    with open(filename) as infile:
+        # Read header line
+        first_line = infile.readline()
+
+        numColumns = len(first_line)
+        numPatients = numColumns - 2 # Except first two columns
+
+        # Read remaning lines
+        linenum = 0
+        rows = []
+        cols = []
+        for line in infile:
+            contents = line.split()[2:]
+
+            contents = np.array(map(int, contents))
+            nonzeros = np.where(contents != 0)[0]
+
+            for n in range(nonzeros.shape[0]):
+                rows.append(nonzeros[n]) # patients who have the words
+                cols.append(linenum)     # word id
+
+            linenum = linenum + 1
+
+    numGenes = linenum 
+    
+    rows = np.array(rows)
+    cols = np.array(cols)
+    data = np.ones((rows.shape[0]))
+
+    geneMatrix = csr_matrix((data, (rows, cols)), shape=(numPatients, numGenes))
+    return geneMatrix
+
+def loadCancerDataAbsolute(filename):
+# This function returns a (DxV) sparse matrix 
+# where each row is a patient, each column is a gene
+# and each entry represents an event (entry is 1 if copy number is (-1 or 1) or 2 if copy number is (-2 or 2)).
+#
+# filename = "data_CNA_notna.txt"
+# tf = loadCancerDataAbsolute(filename)
+    with open(filename) as infile:
+        # Read header line
+        first_line = infile.readline()
+
+        numColumns = len(first_line)
+        numPatients = numColumns - 2 # Except first two columns
+
+        # Read remaning lines
+        linenum = 0
+        rows = []
+        cols = []
+        data = []
+        for line in infile:
+            contents = line.split()[2:]
+
+            contents = np.array(map(int, contents))
+            nonzeros = np.where(contents != 0)[0]
+
+            for n in range(nonzeros.shape[0]):
+                rows.append(nonzeros[n]) # patients who have the words
+                cols.append(linenum)     # word id
+                data.append(np.abs(contents[nonzeros[n]]))
+                
+            linenum = linenum + 1
+
+    numGenes = linenum 
+    
+    rows = np.array(rows)
+    cols = np.array(cols)
+    data = np.array(data)
+
+    geneMatrix = csr_matrix((data, (rows, cols)), shape=(numPatients, numGenes))
+    return geneMatrix
+
+def loadCancerDataPosNeg(filename):
+# This function returns a (Dx2V) sparse matrix 
+# where each row is a patient, 
+# each column is a gene (we set 2 columns per gene; gene_neg and gene_pos to represent dropout and amplification events)
+# and each entry represents an event (entry is 1 or 2, its column depends on the sign (- or +)).
+#
+# filename = "data_CNA_notna.txt"
+# tf = loadCancerDataPosNeg(filename)
+    with open(filename) as infile:
+        # Read header line
+        first_line = infile.readline()
+
+        numColumns = len(first_line)
+        numPatients = numColumns - 2 # Except first two columns
+
+        # Read remaning lines
+        linenum = 0
+        rows = []
+        cols = []
+        data = []
+        for line in infile:
+            contents = line.split()[2:]
+
+            contents = np.array(map(int, contents))
+            nonzeros = np.where(contents != 0)[0]
+
+            for n in range(nonzeros.shape[0]):
+                val = contents[nonzeros[n]]
+                
+                rows.append(nonzeros[n]) 
+                if val<0:
+                    cols.append(2*linenum) # negative words (lost the gene)
+                else:
+                    cols.append(2*linenum+1) # positive words (have multiple genes)
+                data.append(np.abs(val))
+                
+            linenum = linenum + 1
+
+    numGenes = linenum 
+    
+    rows = np.array(rows)
+    cols = np.array(cols)
+    data = np.array(data)
+
+    geneMatrix = csr_matrix((data, (rows, cols)), shape=(numPatients, 2*numGenes))
+    return geneMatrix
+##### End of Cancer Data Generation #####
 
 def getDataDimensions(input_data):
     # gets the dimensions of the data tf
