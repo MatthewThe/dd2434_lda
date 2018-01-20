@@ -17,8 +17,8 @@ import zipfile
 import os.path
 
 from sklearn import datasets, svm
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
+#from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score
 
 def main(argv):
@@ -27,7 +27,7 @@ def main(argv):
     #tf = loadMockData(10, 10)
     K = 3
     
-    generatedData = False
+    generatedData = True
     if generatedData:
         D = 50
         N = 15
@@ -40,13 +40,13 @@ def main(argv):
         print(theta_original)
         print("*** Original beta ***")
         print(beta_original)
-    else:
-        tf, labels_1, labels_2, topic_texts = loadData('reutersdata', 'earn', 'grain')
+    #else:
+    #    tf, labels_1, labels_2, topic_texts = loadData('reutersdata', 'earn', 'grain')
         #tf = loadSimpleData()
         #tf = csr_matrix(tf)
-    #else:
-    #    filename = "data_CNA_notna.txt"
-    #    tf = loadCancerDataPosNeg(filename) # or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
+    else:
+        filename = "data_CNA_notna.txt"
+        tf = loadCancerDataPosNeg(filename) # or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
     
     # Initialize parameters
 
@@ -54,7 +54,7 @@ def main(argv):
     #K = 10 # Number of Topics
     D = getDataDimensions(tf)[0] # Number of Documents
     V = getDataDimensions(tf)[1] # Number of words in dictionary
-    N = np.max(np.sum(tf, axis = 1))
+    N = np.max(tf.sum(axis=1))
     beta_init = np.zeros((D, N)) # beta
     alpha_init = 50.0/K # alpha
     gamma_init = [alpha_init + float(N)/K] * K # gamma
