@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import csv
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.sparse import csr_matrix
@@ -36,8 +38,7 @@ def main(argv):
         print("*** Original beta ***")
         print(beta_original)
     else:
-        tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
-        tf = tf[:1000,:]
+        tf, labels_1, labels_2, topic_texts = loadData('reutersdata', 'earn', 'grain')
         #tf = loadSimpleData()
         #tf = csr_matrix(tf)
     # Initialize parameters
@@ -67,7 +68,6 @@ def main(argv):
     
     gamma, Lambda, phi = VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda) 
     
-    print gamma
     if generatedData:
         print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
         print("\n*** Original beta ***")
@@ -77,7 +77,14 @@ def main(argv):
         for k in range(K):
             compareGamma = np.concatenate((compareGamma, np.sum(Z_original == k, axis = 1)[np.newaxis,:].T), axis = 1)
         print(compareGamma)
-
+    else:
+        printResults(gamma, topic_texts)
+    
+def printResults(gamma, topic_texts):
+    D = len(topic_texts)
+    writer = csv.writer(open('output.tsv', 'w'), delimiter = '\t')
+    for d in range(D):
+        writer.writerow(list(gamma[d,:]) + [topic_texts[d]])
 
 ##### Start of Synthetic Data Generation #####
 def createAlpha(maxAlpha=1):
@@ -176,33 +183,8 @@ def loadMockData(D,V,max_repeats=5):
 def loadSimpleData():
     return np.array([[9,1,9],[1,9,1],[9,1,9],[10,10,10],[5,5,11]])
 
-def loadData(folderName, keyword_1, keyword_2):
-    data = []
-    labels_1 = []
-    topic_of_interest_1 = keyword_1
-    labels_2 = []
-    topic_of_interest_2 = keyword_2
-    for file in os.listdir(folderName):
-        if file.endswith('.sgm'):
-            f = open(folderName + '/' + file,'rb')
-            #print('reutersdata/' + file)
-            filestring = f.read()
-            soup = (filestring)
-            contents = soup.findAll('text')
-            for content in contents:
-                data.append(content.text)
-            topics = soup.findAll('topics')
-            for topic in topics:
-                labels_1.append(topic_of_interest_1 in topic.text)
-                labels_2.append(topic_of_interest_2 in topic.text)
-    vectorizer = CountVectorizer()
-    tf = vectorizer.fit_transform(data)
-    
-    return(tf, labels_1, labels_2)
-
 ## Functions
 
-@profile
 def ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda):
     # Computes likelihood of the variational model (eq. 15).
     # Lambda is the additional hyperparameter for the etas. (smoothed version) 
@@ -218,16 +200,12 @@ def ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda):
         Likelihood[d] = ComputeDocumentLikelihood(wd, alpha, eta, gamma, digamma_gamma, phi, digamma_lambda, d)
     
     #Hazal's notes, eq. 8
-    E_beta_eta = K * (gammaln(eta*V) - V*gammaln(eta))
-    E_beta_lambda = 0
-    for r in range(K):
-        #Hazal's notes, eq. 12
-        E_beta_lambda += gammaln(np.sum(Lambda[r,:])) - np.sum(gammaln(Lambda[r,:]))
-        for i in range(V):
-            #Hazal's notes, eq. 8
-            E_beta_eta += (eta - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
-            #Hazal's notes, eq. 12
-            E_beta_lambda += (Lambda[r,i] - 1)*(digamma(Lambda[r,i]) - digamma(np.sum(Lambda[r,:])))
+    E_beta_eta = K * (gammaln(eta*V) - V*gammaln(eta)) + (eta - 1) * np.sum(digamma_lambda)
+    
+    #Hazal's notes, eq. 12
+    E_beta_lambda = np.sum(gammaln(np.sum(Lambda, axis = 1)) - np.sum(gammaln(Lambda), axis = 1)[np.newaxis,:]) \
+                    + np.sum((Lambda - 1) * digamma_lambda.T)
+    
     #print "plus", E_beta_eta
     #print "min", E_beta_lambda
     Likelihood = np.sum(Likelihood) + E_beta_eta - E_beta_lambda
@@ -267,7 +245,6 @@ def wordCountToFlatArray(tf):
     return np.repeat(tf.indices, tf.data)
     #return np.repeat(range(40), tf)
 
-@profile
 def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 100):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
     #
@@ -309,8 +286,9 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
         if newLikelihood < likelihood and dlikelihood > EstepConvergeThreshold:
             print('WARNING: E-step lower bound decreased')
             print("old", likelihood, "new", newLikelihood)
-            #sys.exit()
+            sys.exit()
         likelihood = newLikelihood
+        print(likelihood)
         if(dlikelihood < EstepConvergeThreshold):
             print('E-step converged after %d iterations' %iterations)
             converged = True
@@ -377,21 +355,11 @@ def computeSufficientStats(D, K, gamma):
         stats = stats + np.sum(di_gamma_d)
         
     return stats
-
-def computeSufficientDocumentStats(d, K, gamma):
-    # Given the parameter (gamma or Lambda), this function calculates the sufficient statistics.
-    stats = 0
-    sum_gamma = np.sum(gamma[d,:])   # (D x 1)
-    stats = stats - K * polygamma(0, sum_gamma) # digamma
-    di_gamma_d = polygamma(0, gamma[d,:])
-    stats = stats + np.sum(di_gamma_d)
-        
-    return stats
     
 def computeL(D, K, alpha, stats):
     # Given the parameter (alpha or eta) and the sufficient statistics, this function calculates the lower bound.
-    lik = D * np.log( special.gamma(K*alpha) ) 
-    lik = lik - D * K * np.log( special.gamma(alpha) )
+    lik = D * gammaln(K*alpha) 
+    lik = lik - D * K * gammaln(alpha)
     lik = lik + (alpha - 1) * stats
     return lik
 
@@ -601,12 +569,13 @@ def plotComplexityDocumentModeling(K, perp):
 ### Start of document classifiaction ###
 
 # get 8000 documents out of ~21000 documents
-def loadData(folderName, keyword_1, keyword_2):
+def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000):
     data = []
     labels_1 = []
     topic_of_interest_1 = keyword_1
     labels_2 = []
     topic_of_interest_2 = keyword_2
+    topic_texts = []
     for file in os.listdir(folderName):
         if file.endswith('.sgm'):
             f = open(folderName + '/' + file, 'rb')
@@ -620,12 +589,13 @@ def loadData(folderName, keyword_1, keyword_2):
             for topic in topics:
                 labels_1.append(topic_of_interest_1 in topic.text)
                 labels_2.append(topic_of_interest_2 in topic.text)
-        if len(data) > 7000:
+                topic_texts.append(topic.text)
+        if len(data) >= maxDocs:
             break
     vectorizer = CountVectorizer()
     tf = vectorizer.fit_transform(data)
 
-    return (tf, labels_1, labels_2)
+    return (tf, labels_1, labels_2, topic_texts)
 
 #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
 
