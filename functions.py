@@ -202,7 +202,7 @@ def loadCancerDataBinary(filename):
         # Read header line
         first_line = infile.readline()
 
-        numColumns = len(first_line)
+        numColumns = len(first_line.split("\t"))
         numPatients = numColumns - 2 # Except first two columns
 
         # Read remaning lines
@@ -212,7 +212,7 @@ def loadCancerDataBinary(filename):
         for line in infile:
             contents = line.split()[2:]
 
-            contents = np.array(map(int, contents))
+            contents = np.array(list(map(int, contents)))
             nonzeros = np.where(contents != 0)[0]
 
             for n in range(nonzeros.shape[0]):
@@ -248,7 +248,7 @@ def loadCancerDataAbsolute(filename):
         # Read header line
         first_line = infile.readline()
 
-        numColumns = len(first_line)
+        numColumns = len(first_line.split("\t"))
         numPatients = numColumns - 2 # Except first two columns
 
         # Read remaning lines
@@ -259,7 +259,7 @@ def loadCancerDataAbsolute(filename):
         for line in infile:
             contents = line.split()[2:]
 
-            contents = np.array(map(int, contents))
+            contents = np.array(list(map(int, contents)))
             nonzeros = np.where(contents != 0)[0]
 
             for n in range(nonzeros.shape[0]):
@@ -296,7 +296,7 @@ def loadCancerDataPosNeg(filename):
         # Read header line
         first_line = infile.readline()
 
-        numColumns = len(first_line)
+        numColumns = len(first_line.split("\t"))
         numPatients = numColumns - 2 # Except first two columns
 
         # Read remaning lines
@@ -307,7 +307,7 @@ def loadCancerDataPosNeg(filename):
         for line in infile:
             contents = line.split()[2:]
 
-            contents = np.array(map(int, contents))
+            contents = np.array(list(map(int, contents)))
             nonzeros = np.where(contents != 0)[0]
 
             for n in range(nonzeros.shape[0]):
