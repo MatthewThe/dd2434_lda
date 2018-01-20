@@ -22,7 +22,7 @@ def main(argv):
     #tf = loadMockData(10, 10)
     K = 3
     
-    generatedData = True
+    generatedData = False
     if generatedData:
         D = 50
         N = 15
@@ -202,6 +202,7 @@ def loadData(folderName, keyword_1, keyword_2):
 
 ## Functions
 
+@profile
 def ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda):
     # Computes likelihood of the variational model (eq. 15).
     # Lambda is the additional hyperparameter for the etas. (smoothed version) 
@@ -209,9 +210,12 @@ def ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda):
     K, V = Lambda.shape
     D, N = tf.shape
     
+    digamma_lambda = digamma(Lambda.T) - digamma(np.sum(Lambda, axis = 1))
     Likelihood = np.zeros((D,1))
     for d in range(D):
-        Likelihood[d] = ComputeDocumentLikelihood(tf[d], alpha, eta, gamma, phi, Lambda, d)
+        wd = wordCountToFlatArray(tf[d,:])
+        digamma_gamma = digamma(gamma[d,:]) - digamma(np.sum(gamma[d,:]))
+        Likelihood[d] = ComputeDocumentLikelihood(wd, alpha, eta, gamma, digamma_gamma, phi, digamma_lambda, d)
     
     #Hazal's notes, eq. 8
     E_beta_eta = K * (gammaln(eta*V) - V*gammaln(eta))
@@ -229,36 +233,29 @@ def ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda):
     Likelihood = np.sum(Likelihood) + E_beta_eta - E_beta_lambda
     return(Likelihood)
 
-def ComputeDocumentLikelihood(tf, alpha, eta, gamma, phi, Lambda, d):
+def ComputeDocumentLikelihood(wd, alpha, eta, gamma, digamma_gamma, phi, digamma_lambda, d):
     # Computes likelihood of the variational model (eq. 15).
     # Lambda is the additional hyperparameter for the betas. (smoothed version) 
     
-    K, V = Lambda.shape
-    
-    wd = wordCountToFlatArray(tf)
+    V, K = digamma_lambda.shape
+    N = len(wd)
     
     #Hazal's notes, eq. 6
     E_theta_alpha = gammaln(alpha*K) - K * gammaln(alpha) \
-                        + (alpha-1) * computeSufficientDocumentStats(d, K, gamma)
-
-    E_z_theta = 0
-    E_w_z_beta = 0
-    E_z_phi = 0
-    for n in range(len(wd)):
-        for r in range(K):
-            #Hazal's notes, eq. 7
-            E_z_theta += phi[d,n,r] *(digamma(gamma[d,r]) - digamma(np.sum(gamma[d,:])))
-            #Hazal's notes, eq. 9
-            E_w_z_beta += phi[d,n,r]*(digamma(Lambda[r,wd[n]]) - digamma(np.sum(Lambda[r,:])))
-            #Hazal's notes, eq. 11
-            E_z_phi += phi[d,n,r]*np.log(phi[d,n,r])
+                        + (alpha-1) * np.sum(digamma_gamma)
+    
+    #Hazal's notes, eq. 7
+    E_z_theta = np.dot(np.sum(phi[d,:N,:], axis = 0), digamma_gamma)
+    
+    #Hazal's notes, eq. 9
+    E_w_z_beta = np.sum(digamma_lambda[wd,:] * phi[d,:N,:])
     
     #Hazal's notes, eq. 10
     E_theta_gamma = gammaln(np.sum(gamma[d,:])) - np.sum(gammaln(gamma[d,:])) \
-                    + np.sum([((gamma[d,i] - 1) \
-                        *(digamma(gamma[d, i]) - digamma(np.sum(gamma[d,:])))) \
-                       for i in range(K)])
+                    + np.dot(gamma[d,:] - 1, digamma_gamma)
 
+    #Hazal's notes, eq. 11
+    E_z_phi = np.sum(phi[d,:N,:] * np.log(phi[d,:N,:]))
     
     #print "plus", E_theta_alpha, E_z_theta, E_w_z_beta
     #print "min", E_theta_gamma, E_z_phi
@@ -269,7 +266,8 @@ def ComputeDocumentLikelihood(tf, alpha, eta, gamma, phi, Lambda, d):
 def wordCountToFlatArray(tf):
     return np.repeat(tf.indices, tf.data)
     #return np.repeat(range(40), tf)
-    
+
+@profile
 def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 100):
     # Returns updated phi, gamma and likelihood L(γ,φ,λ; α,β)
     #
@@ -297,18 +295,20 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
         iterations += 1
         phi, gamma = ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda)
         #print("before", ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda), Lambda)
+        
+        # update Lambda
         Lambda[:,:] = eta
         for d in range(D):
             wd = wordCountToFlatArray(tf[d,:])
-            for k in range(K):
-                for n in range(len(wd)):        
-                    Lambda[k,wd[n]] += phi[d,n,k]
+            for n in range(len(wd)):        
+                Lambda[:,wd[n]] += phi[d,n,:]
+        
         newLikelihood = ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)
         dlikelihood = abs((newLikelihood - likelihood)/likelihood)
         #print("after", newLikelihood, Lambda)
-        if newLikelihood < likelihood:
+        if newLikelihood < likelihood and dlikelihood > EstepConvergeThreshold:
             print('WARNING: E-step lower bound decreased')
-            print(likelihood, newLikelihood)
+            print("old", likelihood, "new", newLikelihood)
             #sys.exit()
         likelihood = newLikelihood
         if(dlikelihood < EstepConvergeThreshold):
@@ -316,11 +316,11 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
             converged = True
     return(phi, gamma, Lambda, likelihood)
 
-
 def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 50):
     K, V = Lambda.shape
-    D, N = tf.shape
+    D, _ = tf.shape
     
+    digamma_lambda = digamma(Lambda.T) - digamma(np.sum(Lambda, axis = 1))
     for d in range(D):
         likelihood = -1e9
         converged = False
@@ -330,19 +330,22 @@ def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThresho
                 raise ValueError('E-step phi gamma not converged after %d iterations' %iterations)
             iterations += 1
             wd = wordCountToFlatArray(tf[d,:])
-            for n in range(len(wd)):
-                for k in range(K):
-                    phi[d,n,k] = digamma(gamma[d,k]) - digamma(np.sum(gamma[d,:])) + digamma(Lambda[k,wd[n]]) - digamma(np.sum(Lambda[k,:]))
-                    #if phi[d,n,k] < -200:
-                    #    print phi[d,n,:], wd[n], Lambda[k,wd[n]]
-                phi[d,n,:] = np.exp(phi[d,n,:] - misc.logsumexp(phi[d,n,:]))
-            gamma[d,:] = alpha + np.sum(phi[d,:len(wd),:], axis = 0)
-            newLikelihood = ComputeDocumentLikelihood(tf[d], alpha, eta, gamma, phi, Lambda, d)
+            
+            digamma_gamma = digamma(gamma[d,:]) - digamma(np.sum(gamma[d,:]))
+            
+            N = len(wd)
+            
+            phi[d,:N,:] = digamma_gamma + digamma_lambda[wd,:]
+            phi[d,:N,:] = np.exp(phi[d,:N,:] - misc.logsumexp(phi[d,:N,:], axis = 1)[:,np.newaxis])
+            
+            gamma[d,:] = alpha + np.sum(phi[d,:N,:], axis = 0)
+            
+            newLikelihood = ComputeDocumentLikelihood(wd, alpha, eta, gamma, digamma_gamma, phi, digamma_lambda, d)
             dlikelihood = abs((newLikelihood - likelihood)/likelihood)
-            if newLikelihood < likelihood:
+            if newLikelihood < likelihood and dlikelihood > EstepConvergeThreshold:
                 print('WARNING: E-step phi gamma lower bound decreased')
-                print(likelihood, newLikelihood)
-                #sys.exit()
+                print("old", likelihood, "new", newLikelihood)
+                sys.exit()
             likelihood = newLikelihood
             #print(likelihood)
             if(dlikelihood < EstepConvergeThreshold):
@@ -530,7 +533,6 @@ def MaximizationStepUnitTest():
     alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
 
 ### End of Maximization Part ###
-
 
 def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-6, EstepMaxIterations = 100):
     # Calculates variational parameters gamma, phi, and lambda iteratively until convergence
