@@ -23,9 +23,7 @@ from sklearn.metrics import accuracy_score
 
 def main(argv):
     np.random.seed(1)
-    #tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
-    #tf = loadMockData(10, 10)
-    K = 10
+    K = 50
     
     print("*** LOADING DATA ***")
     generatedData = False
@@ -42,7 +40,7 @@ def main(argv):
         print("*** Original beta ***")
         print(beta_original)
     else:
-        tf, labels_1, labels_2, topic_texts = loadData('reutersdata', 'earn', 'grain')
+        tf, labels_1, labels_2, topic_texts, dictionary = loadData('reutersdata', 'earn', 'grain', maxDocs = 8000)
         #tf = loadSimpleData()
         #tf = csr_matrix(tf)
         #filename = "data_CNA_notna.txt"
@@ -55,14 +53,16 @@ def main(argv):
     D = getDataDimensions(tf)[0] # Number of Documents
     V = getDataDimensions(tf)[1] # Number of words in dictionary
     N = np.max(tf.sum(axis=1))
+    
+    print("Num documents: %d, Dictionary size: %d, Max words in document: %d, Num topics: %d" % (D, V, N, K))
 
     #ExpectationStepUnitTest()
     #MaximizationStepUnitTest()
     #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
     
-    alpha = 5.0 / K
+    alpha = 50.0 / K
     gamma = np.ones((D,K)) * (alpha + float(N)/K)
-    eta = 1.0 # np.random.rand() 
+    eta = 50.0 / V
     Lambda = np.random.rand(K,V) * 0.5 + 0.5
     phi = np.ones((D,N,K)) * (1./ K)
     
@@ -79,25 +79,43 @@ def main(argv):
             compareGamma = np.concatenate((compareGamma, np.sum(Z_original == k, axis = 1)[np.newaxis,:].T), axis = 1)
         print(compareGamma)
     else:
-        printResults(gamma, topic_texts)
+        printResults(tf, gamma, Lambda, phi, topic_texts)
         
         mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim = DocumentClassification(gamma, tf, labels_1)
+        plt.figure()
         plotSVMModelAccuracy(mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
         
-        #DocumentClassification(gamma, tf, labels_2)
-    
-def printResults(gamma, topic_texts):
+        mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim = DocumentClassification(gamma, tf, labels_2)
+        plt.figure()
+        plotSVMModelAccuracy(mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
+        
+        plt.show()
+        
+def printResults(tf, gamma, Lambda, phi, topic_texts):
     D = len(topic_texts)
-    writer = csv.writer(open('output.tsv', 'w'), delimiter = '\t')
+    writer = csv.writer(open('output_gamma.tsv', 'w'), delimiter = '\t')
     for d in range(D):
         writer.writerow(list(gamma[d,:]) + [topic_texts[d]])
+    
+    writer = csv.writer(open('output_Lambda.tsv', 'w'), delimiter = '\t')
+    K, V = Lambda.shape
+    for k in range(K):
+        writer.writerow(list(Lambda[k,:]))
+    
+    writer = csv.writer(open('output_phi.tsv', 'w'), delimiter = '\t')
+    D, N, K = phi.shape
+    for d in range(D):
+        writer.writerow([d])
+        for n in range(int(tf[d,:].sum())):
+            writer.writerow(list(phi[d,n,:]))
 
 def readResults():
-    reader = csv.reader(open('output.tsv', 'r'), delimiter = '\t')
+    reader = csv.reader(open('output_gamma.tsv', 'r'), delimiter = '\t')
     gamma = list()
     for row in reader:
-      gamma.append(map(float, row[:3]))
+      gamma.append(map(float, row[:-1]))
     return np.array(gamma)
+    
 ##### Start of Synthetic Data Generation #####
 def createAlpha(maxAlpha=1):
     alpha = np.random.rand() * maxAlpha
@@ -449,18 +467,21 @@ def ExpectationStep(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold =
             print("old", likelihood, "new", newLikelihood)
             sys.exit()
         likelihood = newLikelihood
-        print(likelihood)
+        print("Likelihood after E-step iteration: %f" % likelihood)
         if(dlikelihood < EstepConvergeThreshold):
             print('E-step converged after %d iterations' %iterations)
             converged = True
     return(phi, gamma, Lambda, likelihood)
 
-def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 50):
+def ExpectationPhiGamma(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-4, EstepMaxIterations = 100):
     K, V = Lambda.shape
     D, _ = tf.shape
     
     digamma_lambda = digamma(Lambda.T) - digamma(np.sum(Lambda, axis = 1))
     for d in range(D):
+        if d % 500 == 0:
+            print("E-step phi gamma document %d" % d)
+        
         likelihood = -1e9
         converged = False
         iterations = 0
@@ -663,7 +684,7 @@ def MaximizationStepUnitTest():
 
 ### End of Maximization Part ###
 
-def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, EstepConvergeThreshold = 1e-6, EstepMaxIterations = 100):
+def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, convergeThreshold = 1e-6, maxIterations = 500):
     print("*** VARIATIONAL EM ***")
     
     # Calculates variational parameters gamma, phi, and lambda iteratively until convergence
@@ -673,21 +694,20 @@ def VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda, Estep
     while(not converged):
         iterations += 1
         phi, gamma, Lambda, newLikelihood = ExpectationStep(tf, alpha, eta, gamma, phi, Lambda)
-        print(newLikelihood)
         #print("gamma")
         #print(gamma)
         
         print("\tM-Step")
-        print("\t\tAlpha:%.5f. Eta: %.5f. Complete Likelihood: %.5f." % (alpha,eta,ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)))
+        print("\t\tAlpha:%.5f. Eta: %.5f. Complete Likelihood: %.5f." % (alpha, eta, newLikelihood))
         alpha, eta = MaximizationStep(alpha, gamma, eta, Lambda)
-        print("\t\tNew Alpha:%.5f. New Eta: %.5f. New Complete Likelihood: %.5f. " % (alpha,eta,ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)))
+        print("\t\tNew Alpha:%.5f. New Eta: %.5f. New Complete Likelihood: %.5f. " % (alpha, eta, ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda)))
         
         dlikelihood = abs((newLikelihood - likelihood)/likelihood)
+        print("DeltaLikelihood: %g" % dlikelihood)
         likelihood = newLikelihood
-        print(ComputeLikelihood(tf, alpha, eta, gamma, phi, Lambda))
         #print("gamma")
         #print(gamma)
-        if(dlikelihood < EstepConvergeThreshold):
+        if(dlikelihood < convergeThreshold):
             print('EM-step converged after %d iterations' %iterations)
             converged = True
     return(gamma, Lambda, phi)
@@ -755,26 +775,19 @@ def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000):
                 topic_texts.append(topic.text)
         if len(data) >= maxDocs:
             break
-    vectorizer = CountVectorizer()
+    vectorizer = CountVectorizer(max_df=0.95, min_df=2,
+                                 token_pattern= '(?u)\\b[a-zA-Z_][a-zA-Z_]+\\b',
+                                 stop_words='english')
     tf = vectorizer.fit_transform(data)
+    dictionary = vectorizer.get_feature_names()
 
-    return (tf, labels_1, labels_2, topic_texts)
-
-#tf, labels_1, labels_2 = loadData('reutersdata', 'earn', 'grain')
+    return (tf, labels_1, labels_2, topic_texts, dictionary)
 
 # Replace with gamma for topic distribution
 def MockTopicData():
     gamma_matrix=np.random.rand(8000, 50)
 
     return (gamma_matrix)
-
-### !!! make sure you have the same documents and labels for comparison of classifications !!!!
-#gamma_matrix = MockTopicData()
-
-# Call labels labels_1 earn, labels_2 grain
-#labels_1_array = np.asarray(labels_1)
-#labels_2_array = np.asarray(labels_2)
-
 
 #Classify documents into binary class
 # Run for EARN vs NOT EARN and GRAIN vs NOT GRAIN, recursively
@@ -786,35 +799,36 @@ def DocumentClassification(gamma_matrix, tf, labels_1_array, num_runs = 3):
     parameters = {'C': [1,3,5,7,10]}
     
     # proportion of test data
-    test_data_size = [0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]
+    train_data_size = [0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]
     
     print("*** LDA gamma features ***")
     ## building classifier for low dimension data D(8000) X K(50) (for LDA features)
-    mean_stats_low_dim, sd_stats_low_dim = trainSVMs(num_runs, gamma_matrix, labels_1_array, parameters, test_data_size)
+    mean_stats_low_dim, sd_stats_low_dim = trainSVMs(num_runs, gamma_matrix, labels_1_array, parameters, train_data_size)
     
     if True:
       print("*** Word features ***")
       ### building a classifier for high dimension data D(8000) X w (for word feature)
-      mean_stats_high_dim, sd_stats_high_dim = trainSVMs(num_runs, tf, labels_1_array, parameters, test_data_size)
+      mean_stats_high_dim, sd_stats_high_dim = trainSVMs(num_runs, tf, labels_1_array, parameters, train_data_size)
     else:
       mean_stats_high_dim, sd_stats_high_dim = np.nan, np.nan
 
     return (mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
     
-def trainSVMs(num_runs, data_array, labels_1_array, parameters, test_data_size):
+def trainSVMs(num_runs, data_array, labels_1_array, parameters, train_data_size):
     low_dim_acc = []
     for k in range(num_runs):
         print("*** Run %d ***" % k)
         acc_list_low_dim = []
-        for i in test_data_size:
+        for i in train_data_size:
             print("*** test data size %f ***" % i)
-            X_topic_train, X_topic_test, y_topic_train, y_topic_test = train_test_split(data_array, labels_1_array, test_size = i, random_state = k)
+            X_topic_train, X_topic_test, y_topic_train, y_topic_test = train_test_split(data_array, labels_1_array, test_size = 1.0 - i, random_state = k)
             svr = svm.LinearSVC()
             grid = GridSearchCV(svr, parameters)
             grid.fit(X_topic_train, y_topic_train)
             predicted = grid.predict(X_topic_test)
             acc_list_low_dim.append(accuracy_score(y_topic_test, predicted))
         low_dim_acc.append(acc_list_low_dim)
+        print acc_list_low_dim
     accuracy_low_dim = np.array(low_dim_acc)
     mean_stats_low_dim = np.mean(accuracy_low_dim, axis=0)
     sd_stats_low_dim = np.std(accuracy_low_dim, axis=0)
@@ -840,7 +854,7 @@ def plotSVMModelAccuracy(mean_low_dim, sd_low_dim, mean_high_dim, sd_high_dim):
     plt.xlabel('Proportion of data used for training')
     plt.ylabel('Accuracy')
     plt.legend(loc='lower right', shadow=True, fontsize='x-large', prop={'size': 10})
-    plt.show()
+
 
 #plotSVMModelAccuracy()
 
