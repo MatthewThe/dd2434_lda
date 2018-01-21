@@ -23,15 +23,17 @@ from sklearn.metrics import accuracy_score
 
 def main(argv):
     np.random.seed(1)
-    K = 50
-    
+    K = 3
+        
     print("*** LOADING DATA ***")
-    generatedData = False
+    generatedData = True
     if generatedData:
         D = 50
         N = 15
         V = 30
-        alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1)
+        #K_generate = 5
+        K_generate = K
+        alpha_original, eta_original, beta_original, theta_original, Z_original, _, tf = createSampleSparse(D,N,K_generate,V,maxAlpha=1, maxEta=1)
         #tf = tf.toarray()
         #print tf
         print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
@@ -60,9 +62,9 @@ def main(argv):
     #MaximizationStepUnitTest()
     #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
     
-    alpha = 50.0 / K
+    alpha = 5.0 / K
     gamma = np.ones((D,K)) * (alpha + float(N)/K)
-    eta = 50.0 / V
+    eta = 1.0 # 50.0 / V
     Lambda = np.random.rand(K,V) * 0.5 + 0.5
     phi = np.ones((D,N,K)) * (1./ K)
     
@@ -74,10 +76,12 @@ def main(argv):
         print("\n*** Original beta ***")
         print(beta_original)
         print("*** Original theta vs VEM gamma ***")
-        compareGamma = gamma
-        for k in range(K):
+        compareGamma = gamma - alpha
+        for k in range(K_generate):
             compareGamma = np.concatenate((compareGamma, np.sum(Z_original == k, axis = 1)[np.newaxis,:].T), axis = 1)
         print(compareGamma)
+        plt.imshow(compareGamma, aspect = 'auto', interpolation = 'none', cmap = 'Reds')
+        plt.show()
     else:
         printResults(tf, gamma, Lambda, phi, topic_texts)
         

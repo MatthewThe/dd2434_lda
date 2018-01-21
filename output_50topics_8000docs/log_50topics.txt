@@ -1,0 +1,4608 @@
+*** LOADING DATA ***
+/usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py:130: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  if np.rank(self.data) != 1 or np.rank(self.indices) != 1 or np.rank(self.indptr) != 1:
+Num documents: 8578, Dictionary size: 15359, Max words in document: 754, Num topics: 50
+*** VARIATIONAL EM ***
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -7490216.287515
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -6663223.740020
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -5941227.033070
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -5512753.574712
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -5215041.841907
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -5019327.556848
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4891364.790299
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4805711.642113
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4746259.239935
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4702677.533610
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4670103.335930
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4645315.138169
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4625868.916187
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4610349.566784
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4597573.893455
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4586862.877045
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4577854.290022
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4570266.823446
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4563634.584919
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4557982.903635
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4552980.653453
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4548586.531232
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4544585.644529
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4541069.036122
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4537921.752790
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4535128.691209
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4532559.622857
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4530301.289199
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4528331.721774
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4526589.541894
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4524928.842328
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4523372.593524
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4521908.085920
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4520565.238931
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4519389.379780
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4518249.915988
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4517186.229213
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4516219.980920
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4515250.227394
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4514369.721736
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4513555.007581
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4512755.131715
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4511961.291207
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4511252.266705
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4510561.788169
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4509923.718210
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4509327.426879
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4508775.497145
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4508231.418736
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4507681.152556
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4507162.736994
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4506664.120127
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4506200.636326
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4505781.475861
+E-step converged after 54 iterations
+	M-Step
+		Alpha:1.00000. Eta: 0.00326. Complete Likelihood: -4505781.47586.
+		Converged: gradient close to zero at iteration: 5
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.81388. New Eta: 0.00329. New Complete Likelihood: -4499392.44794. 
+DeltaLikelihood: 4.50578e+16
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4493017.888679
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4492592.140391
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.81388. Eta: 0.00329. Complete Likelihood: -4492592.14039.
+		Converged: gradient close to zero at iteration: 5
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.68151. New Eta: 0.00332. New Complete Likelihood: -4487717.77548. 
+DeltaLikelihood: 0.0029272
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4482793.956885
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4482389.924934
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.68151. Eta: 0.00332. Complete Likelihood: -4482389.92493.
+		Converged: gradient close to zero at iteration: 5
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.58423. New Eta: 0.00335. New Complete Likelihood: -4478628.81081. 
+DeltaLikelihood: 0.0022709
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4474748.506657
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4474329.098934
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.58423. Eta: 0.00335. Complete Likelihood: -4474329.09893.
+		Converged: gradient close to zero at iteration: 5
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.51051. New Eta: 0.00338. New Complete Likelihood: -4471379.60492. 
+DeltaLikelihood: 0.00179833
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4468243.962386
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4467829.168729
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.51051. Eta: 0.00338. Complete Likelihood: -4467829.16873.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.45307. New Eta: 0.00341. New Complete Likelihood: -4465472.21879. 
+DeltaLikelihood: 0.00145272
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4462890.426688
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4462511.180042
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.45307. Eta: 0.00341. Complete Likelihood: -4462511.18004.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.40719. New Eta: 0.00344. New Complete Likelihood: -4460590.51478. 
+DeltaLikelihood: 0.00119028
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4458429.608202
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4458056.055696
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.40719. Eta: 0.00344. Complete Likelihood: -4458056.05570.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.36973. New Eta: 0.00347. New Complete Likelihood: -4456460.62884. 
+DeltaLikelihood: 0.000998345
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4454622.529957
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4454294.198588
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.36973. Eta: 0.00347. Complete Likelihood: -4454294.19859.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.33860. New Eta: 0.00350. New Complete Likelihood: -4452948.03466. 
+DeltaLikelihood: 0.000843834
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4451391.747422
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4451089.130471
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.33860. Eta: 0.00350. Complete Likelihood: -4451089.13047.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.31238. New Eta: 0.00353. New Complete Likelihood: -4449943.47196. 
+DeltaLikelihood: 0.000719546
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4448593.735196
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4448326.030294
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.31238. Eta: 0.00353. Complete Likelihood: -4448326.03029.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.29012. New Eta: 0.00356. New Complete Likelihood: -4447349.27074. 
+DeltaLikelihood: 0.000620769
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4446187.319578
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4445941.044075
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.29012. Eta: 0.00356. Complete Likelihood: -4445941.04408.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.27112. New Eta: 0.00358. New Complete Likelihood: -4445110.83618. 
+DeltaLikelihood: 0.000536154
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4444103.594382
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4443867.633245
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.27112. Eta: 0.00358. Complete Likelihood: -4443867.63324.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.25485. New Eta: 0.00361. New Complete Likelihood: -4443166.84249. 
+DeltaLikelihood: 0.00046636
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4442302.977117
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4442110.620826
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.25485. Eta: 0.00361. Complete Likelihood: -4442110.62083.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.24091. New Eta: 0.00364. New Complete Likelihood: -4441524.36268. 
+DeltaLikelihood: 0.000395379
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4440807.234808
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4440650.043482
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.24091. Eta: 0.00364. Complete Likelihood: -4440650.04348.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.22898. New Eta: 0.00366. New Complete Likelihood: -4440165.54602. 
+DeltaLikelihood: 0.000328803
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4439550.896726
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4439396.208681
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.22898. Eta: 0.00366. Complete Likelihood: -4439396.20868.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.21875. New Eta: 0.00369. New Complete Likelihood: -4438999.49918. 
+DeltaLikelihood: 0.000282354
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4438477.801279
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4438332.110437
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.21875. Eta: 0.00369. Complete Likelihood: -4438332.11044.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.20998. New Eta: 0.00372. New Complete Likelihood: -4438009.43136. 
+DeltaLikelihood: 0.000239694
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4437582.020185
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4437452.075501
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.20998. Eta: 0.00372. Complete Likelihood: -4437452.07550.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.20245. New Eta: 0.00374. New Complete Likelihood: -4437190.79803. 
+DeltaLikelihood: 0.000198281
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4436824.906133
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4436712.126257
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.20245. Eta: 0.00374. Complete Likelihood: -4436712.12626.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.19597. New Eta: 0.00377. New Complete Likelihood: -4436500.87161. 
+DeltaLikelihood: 0.000166751
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4436192.390058
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4436080.314560
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.19597. Eta: 0.00377. Complete Likelihood: -4436080.31456.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.19037. New Eta: 0.00380. New Complete Likelihood: -4435909.45465. 
+DeltaLikelihood: 0.000142405
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4435643.643057
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4435541.056392
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.19037. Eta: 0.00380. Complete Likelihood: -4435541.05639.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.18554. New Eta: 0.00382. New Complete Likelihood: -4435403.05441. 
+DeltaLikelihood: 0.000121562
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4435180.670850
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4435097.869271
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.18554. Eta: 0.00382. Complete Likelihood: -4435097.86927.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.18134. New Eta: 0.00385. New Complete Likelihood: -4434985.49739. 
+DeltaLikelihood: 9.99173e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434810.708959
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434736.007938
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.18134. Eta: 0.00385. Complete Likelihood: -4434736.00794.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.17771. New Eta: 0.00387. New Complete Likelihood: -4434644.73336. 
+DeltaLikelihood: 8.15904e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434498.148047
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434428.875785
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.17771. Eta: 0.00387. Complete Likelihood: -4434428.87579.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.17455. New Eta: 0.00389. New Complete Likelihood: -4434354.55029. 
+DeltaLikelihood: 6.9256e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434218.811202
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4434151.794702
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.17455. Eta: 0.00389. Complete Likelihood: -4434151.79470.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.17180. New Eta: 0.00392. New Complete Likelihood: -4434090.57622. 
+DeltaLikelihood: 6.24841e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433977.429458
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433920.674482
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.17180. Eta: 0.00392. Complete Likelihood: -4433920.67448.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16941. New Eta: 0.00394. New Complete Likelihood: -4433870.12478. 
+DeltaLikelihood: 5.21228e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433779.768350
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433739.934420
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16941. Eta: 0.00394. Complete Likelihood: -4433739.93442.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16733. New Eta: 0.00397. New Complete Likelihood: -4433698.02100. 
+DeltaLikelihood: 4.0763e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433627.426084
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433591.089570
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16733. Eta: 0.00397. Complete Likelihood: -4433591.08957.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16552. New Eta: 0.00399. New Complete Likelihood: -4433556.04922. 
+DeltaLikelihood: 3.35709e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433491.051224
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433465.779446
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16552. Eta: 0.00399. Complete Likelihood: -4433465.77945.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16395. New Eta: 0.00401. New Complete Likelihood: -4433436.17764. 
+DeltaLikelihood: 2.82638e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433379.230633
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433352.036653
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16395. Eta: 0.00401. Complete Likelihood: -4433352.03665.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16257. New Eta: 0.00404. New Complete Likelihood: -4433326.61518. 
+DeltaLikelihood: 2.56555e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433276.196289
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433259.446477
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16257. Eta: 0.00404. Complete Likelihood: -4433259.44648.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16138. New Eta: 0.00406. New Complete Likelihood: -4433237.47765. 
+DeltaLikelihood: 2.08849e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433198.634804
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433175.916744
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16138. Eta: 0.00406. Complete Likelihood: -4433175.91674.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.16034. New Eta: 0.00408. New Complete Likelihood: -4433156.68426. 
+DeltaLikelihood: 1.88416e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433109.567014
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433088.095387
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.16034. Eta: 0.00408. Complete Likelihood: -4433088.09539.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15944. New Eta: 0.00410. New Complete Likelihood: -4433071.05245. 
+DeltaLikelihood: 1.981e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433036.330831
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4433017.200660
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15944. Eta: 0.00410. Complete Likelihood: -4433017.20066.
+		Converged: gradient close to zero at iteration: 4
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15864. New Eta: 0.00412. New Complete Likelihood: -4433001.88586. 
+DeltaLikelihood: 1.59922e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432970.278895
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432952.201587
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15864. Eta: 0.00412. Complete Likelihood: -4432952.20159.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15795. New Eta: 0.00415. New Complete Likelihood: -4432938.32108. 
+DeltaLikelihood: 1.46625e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432914.226545
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432901.456749
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15795. Eta: 0.00415. Complete Likelihood: -4432901.45675.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15735. New Eta: 0.00417. New Complete Likelihood: -4432888.74990. 
+DeltaLikelihood: 1.14472e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432862.855708
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432847.107977
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15735. Eta: 0.00417. Complete Likelihood: -4432847.10798.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15682. New Eta: 0.00419. New Complete Likelihood: -4432835.35091. 
+DeltaLikelihood: 1.22603e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432810.238448
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432796.556245
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15682. Eta: 0.00419. Complete Likelihood: -4432796.55624.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15635. New Eta: 0.00421. New Complete Likelihood: -4432785.61032. 
+DeltaLikelihood: 1.14039e-05
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432765.521852
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432759.178733
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15635. Eta: 0.00421. Complete Likelihood: -4432759.17873.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15594. New Eta: 0.00423. New Complete Likelihood: -4432748.92121. 
+DeltaLikelihood: 8.43204e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432730.612223
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432722.983964
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15594. Eta: 0.00423. Complete Likelihood: -4432722.98396.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15558. New Eta: 0.00425. New Complete Likelihood: -4432713.33476. 
+DeltaLikelihood: 8.16529e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432698.002840
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432689.433388
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15558. Eta: 0.00425. Complete Likelihood: -4432689.43339.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15526. New Eta: 0.00427. New Complete Likelihood: -4432680.30743. 
+DeltaLikelihood: 7.56884e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432660.232222
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432652.782490
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15526. Eta: 0.00427. Complete Likelihood: -4432652.78249.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15498. New Eta: 0.00429. New Complete Likelihood: -4432644.13810. 
+DeltaLikelihood: 8.26832e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432628.728073
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432619.745756
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15498. Eta: 0.00429. Complete Likelihood: -4432619.74576.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15474. New Eta: 0.00431. New Complete Likelihood: -4432611.50416. 
+DeltaLikelihood: 7.45304e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432589.645589
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432581.513222
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15474. Eta: 0.00431. Complete Likelihood: -4432581.51322.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15452. New Eta: 0.00433. New Complete Likelihood: -4432573.65854. 
+DeltaLikelihood: 8.62527e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432558.147158
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432553.018745
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15452. Eta: 0.00433. Complete Likelihood: -4432553.01875.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15433. New Eta: 0.00435. New Complete Likelihood: -4432545.51206. 
+DeltaLikelihood: 6.42842e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432533.158150
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432526.980788
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15433. Eta: 0.00435. Complete Likelihood: -4432526.98079.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15416. New Eta: 0.00437. New Complete Likelihood: -4432519.78018. 
+DeltaLikelihood: 5.87426e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432509.566659
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432507.394639
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15416. Eta: 0.00437. Complete Likelihood: -4432507.39464.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15400. New Eta: 0.00438. New Complete Likelihood: -4432500.49300. 
+DeltaLikelihood: 4.41873e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432490.490382
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432486.407304
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15400. Eta: 0.00438. Complete Likelihood: -4432486.40730.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15387. New Eta: 0.00440. New Complete Likelihood: -4432479.77919. 
+DeltaLikelihood: 4.73487e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432468.729899
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432466.014625
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15387. Eta: 0.00440. Complete Likelihood: -4432466.01462.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15375. New Eta: 0.00442. New Complete Likelihood: -4432459.64477. 
+DeltaLikelihood: 4.60073e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432450.193664
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432447.190220
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15375. Eta: 0.00442. Complete Likelihood: -4432447.19022.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15364. New Eta: 0.00444. New Complete Likelihood: -4432441.06637. 
+DeltaLikelihood: 4.24694e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432429.082454
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432422.055730
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15364. Eta: 0.00444. Complete Likelihood: -4432422.05573.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15354. New Eta: 0.00445. New Complete Likelihood: -4432416.16658. 
+DeltaLikelihood: 5.67057e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432404.778619
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432399.945670
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15354. Eta: 0.00445. Complete Likelihood: -4432399.94567.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15345. New Eta: 0.00447. New Complete Likelihood: -4432394.28664. 
+DeltaLikelihood: 4.98826e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432386.866969
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432384.575800
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15345. Eta: 0.00447. Complete Likelihood: -4432384.57580.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15337. New Eta: 0.00449. New Complete Likelihood: -4432379.12959. 
+DeltaLikelihood: 3.46762e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432371.088683
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432367.348412
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15337. Eta: 0.00449. Complete Likelihood: -4432367.34841.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15330. New Eta: 0.00450. New Complete Likelihood: -4432362.10401. 
+DeltaLikelihood: 3.88671e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432354.565076
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432352.278301
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15330. Eta: 0.00450. Complete Likelihood: -4432352.27830.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15323. New Eta: 0.00452. New Complete Likelihood: -4432347.22956. 
+DeltaLikelihood: 3.40001e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432339.917376
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432336.318773
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15323. Eta: 0.00452. Complete Likelihood: -4432336.31877.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15317. New Eta: 0.00454. New Complete Likelihood: -4432331.45672. 
+DeltaLikelihood: 3.60069e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432323.456876
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432319.773496
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15317. Eta: 0.00454. Complete Likelihood: -4432319.77350.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15312. New Eta: 0.00455. New Complete Likelihood: -4432315.09266. 
+DeltaLikelihood: 3.73286e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432300.316451
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432292.833919
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15312. Eta: 0.00455. Complete Likelihood: -4432292.83392.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15307. New Eta: 0.00457. New Complete Likelihood: -4432288.34072. 
+DeltaLikelihood: 6.07799e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432279.925802
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432269.356888
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15307. Eta: 0.00457. Complete Likelihood: -4432269.35689.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15303. New Eta: 0.00458. New Complete Likelihood: -4432265.03714. 
+DeltaLikelihood: 5.29681e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432258.400423
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432256.133411
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15303. Eta: 0.00458. Complete Likelihood: -4432256.13341.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15298. New Eta: 0.00460. New Complete Likelihood: -4432251.97618. 
+DeltaLikelihood: 2.98346e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432244.026955
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432237.684418
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15298. Eta: 0.00460. Complete Likelihood: -4432237.68442.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15295. New Eta: 0.00461. New Complete Likelihood: -4432233.68418. 
+DeltaLikelihood: 4.16244e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432221.757953
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432218.460302
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15295. Eta: 0.00461. Complete Likelihood: -4432218.46030.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15291. New Eta: 0.00463. New Complete Likelihood: -4432214.61808. 
+DeltaLikelihood: 4.33734e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432209.187103
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432208.294340
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15291. Eta: 0.00463. Complete Likelihood: -4432208.29434.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15288. New Eta: 0.00464. New Complete Likelihood: -4432204.59492. 
+DeltaLikelihood: 2.29365e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432197.758846
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432195.678888
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15288. Eta: 0.00464. Complete Likelihood: -4432195.67889.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15286. New Eta: 0.00466. New Complete Likelihood: -4432192.11994. 
+DeltaLikelihood: 2.84631e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432187.800131
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432186.882866
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15286. Eta: 0.00466. Complete Likelihood: -4432186.88287.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15283. New Eta: 0.00467. New Complete Likelihood: -4432183.45620. 
+DeltaLikelihood: 1.98457e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432179.308404
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432178.282736
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15283. Eta: 0.00467. Complete Likelihood: -4432178.28274.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15281. New Eta: 0.00469. New Complete Likelihood: -4432174.98367. 
+DeltaLikelihood: 1.94038e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432170.539655
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432170.197045
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15281. Eta: 0.00469. Complete Likelihood: -4432170.19705.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15279. New Eta: 0.00470. New Complete Likelihood: -4432167.02108. 
+DeltaLikelihood: 1.82432e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432163.370537
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432162.327408
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15279. Eta: 0.00470. Complete Likelihood: -4432162.32741.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15277. New Eta: 0.00471. New Complete Likelihood: -4432159.27007. 
+DeltaLikelihood: 1.77557e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432155.172192
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432154.335199
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15277. Eta: 0.00471. Complete Likelihood: -4432154.33520.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15275. New Eta: 0.00473. New Complete Likelihood: -4432151.39215. 
+DeltaLikelihood: 1.80323e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432147.900021
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432147.087628
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15275. Eta: 0.00473. Complete Likelihood: -4432147.08763.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15273. New Eta: 0.00474. New Complete Likelihood: -4432144.25487. 
+DeltaLikelihood: 1.63523e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432140.975725
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432139.632791
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15273. Eta: 0.00474. Complete Likelihood: -4432139.63279.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15271. New Eta: 0.00475. New Complete Likelihood: -4432136.90633. 
+DeltaLikelihood: 1.68199e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432133.125593
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432132.280393
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15271. Eta: 0.00475. Complete Likelihood: -4432132.28039.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15270. New Eta: 0.00476. New Complete Likelihood: -4432129.65628. 
+DeltaLikelihood: 1.65888e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432126.544461
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432125.711871
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15270. Eta: 0.00476. Complete Likelihood: -4432125.71187.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15268. New Eta: 0.00478. New Complete Likelihood: -4432123.18664. 
+DeltaLikelihood: 1.48202e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432119.970486
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432119.474180
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15268. Eta: 0.00478. Complete Likelihood: -4432119.47418.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15267. New Eta: 0.00479. New Complete Likelihood: -4432117.04437. 
+DeltaLikelihood: 1.40738e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432112.942900
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432109.813647
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15267. Eta: 0.00479. Complete Likelihood: -4432109.81365.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15266. New Eta: 0.00480. New Complete Likelihood: -4432107.47811. 
+DeltaLikelihood: 2.17966e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432105.009312
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432104.483304
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15266. Eta: 0.00480. Complete Likelihood: -4432104.48330.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15265. New Eta: 0.00481. New Complete Likelihood: -4432102.23628. 
+DeltaLikelihood: 1.20266e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432099.441952
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432097.386323
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15265. Eta: 0.00481. Complete Likelihood: -4432097.38632.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15264. New Eta: 0.00482. New Complete Likelihood: -4432095.22454. 
+DeltaLikelihood: 1.60127e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432089.794269
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432089.465323
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15264. Eta: 0.00482. Complete Likelihood: -4432089.46532.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15263. New Eta: 0.00483. New Complete Likelihood: -4432087.38790. 
+DeltaLikelihood: 1.78719e-06
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432085.131200
+E-step phi gamma document 0
+E-step phi gamma document 500
+E-step phi gamma document 1000
+E-step phi gamma document 1500
+E-step phi gamma document 2000
+E-step phi gamma document 2500
+E-step phi gamma document 3000
+E-step phi gamma document 3500
+E-step phi gamma document 4000
+E-step phi gamma document 4500
+E-step phi gamma document 5000
+E-step phi gamma document 5500
+E-step phi gamma document 6000
+E-step phi gamma document 6500
+E-step phi gamma document 7000
+E-step phi gamma document 7500
+E-step phi gamma document 8000
+E-step phi gamma document 8500
+Likelihood after E-step iteration: -4432085.070228
+E-step converged after 2 iterations
+	M-Step
+		Alpha:0.15263. Eta: 0.00483. Complete Likelihood: -4432085.07023.
+		Converged: gradient close to zero at iteration: 3
+		Converged: gradient close to zero at iteration: 4
+		New Alpha:0.15262. New Eta: 0.00484. New Complete Likelihood: -4432083.07190. 
+DeltaLikelihood: 9.91653e-07
+EM-step converged after 78 iterations
+*** DOCUMENT CLASSIFICATION ***
+*** LDA gamma features ***
+*** Run 0 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.91993406334628514, 0.89276073619631902, 0.92954280533609634, 0.93019747668677999, 0.93661663995337319, 0.93814112527199256]
+*** Run 1 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.85682326621923932, 0.90490797546012269, 0.929283771532185, 0.93842567196928139, 0.9373451843217252, 0.92928193969536832]
+*** Run 2 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.84139879901095016, 0.88453987730061345, 0.92837715321849501, 0.9366428963247394, 0.93880227305842923, 0.93580976064656507]
+*** Word features ***
+*** Run 0 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.937477922995408, 0.94110429447852761, 0.94586193498251525, 0.94761382336807465, 0.94856476759434649, 0.95259558594964255]
+*** Run 1 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.91440009419521961, 0.93852760736196317, 0.94858178992358499, 0.94816236972024137, 0.94754480547865361, 0.95135219148274786]
+*** Run 2 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.92746968091369364, 0.94601226993865029, 0.95324439839399044, 0.95296215030170051, 0.95308174267812906, 0.95368355610817535]
+*** DOCUMENT CLASSIFICATION ***
+*** LDA gamma features ***
+*** Run 0 ***
+*** test data size 0.010000 ***
+/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_split.py:579: Warning: The least populated class in y has only 2 members, which is too few. The minimum number of groups for any class cannot be less than n_splits=3.
+  % (min_groups, self.n_splits)), Warning)
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.9623219121629577, 0.96993865030674842, 0.93303976168890035, 0.95940756993965992, 0.97464665598134925, 0.96984768417780542]
+*** Run 1 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.95466855057105848, 0.96134969325153374, 0.95687087164875018, 0.95872188699945149, 0.96765263004516977, 0.93612060926328877]
+*** Run 2 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.96703167314258798, 0.95190184049079751, 0.93653671804170446, 0.9651673066374109, 0.97741512458108704, 0.97637550512900217]
+*** Word features ***
+*** Run 0 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.97056399387731074, 0.97975460122699387, 0.98562362388291669, 0.98573779484366431, 0.98819758123269708, 0.98849860118122479]
+*** Run 1 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.97021076180383847, 0.97840490797546009, 0.98510555627509389, 0.98614920460778932, 0.98776045461168582, 0.98880944979794838]
+*** Run 2 ***
+*** test data size 0.010000 ***
+*** test data size 0.050000 ***
+*** test data size 0.100000 ***
+*** test data size 0.150000 ***
+*** test data size 0.200000 ***
+*** test data size 0.250000 ***
+[0.97268338631814433, 0.9786503067484662, 0.97927729568708721, 0.98436642896324744, 0.98572053038030016, 0.98632266086415921]
