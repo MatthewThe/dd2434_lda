@@ -113,6 +113,25 @@ def printResults(tf, gamma, Lambda, phi, topic_texts):
         for n in range(int(tf[d,:].sum())):
             writer.writerow(list(phi[d,n,:]))
 
+
+def printResultsCancer(tf, gamma, Lambda, phi):
+    D = gamma.shape[0]
+    writer = csv.writer(open('output_gamma.tsv', 'w'), delimiter = '\t')
+    for d in range(D):
+        writer.writerow(list(gamma[d,:]))
+    
+    writer = csv.writer(open('output_Lambda.tsv', 'w'), delimiter = '\t')
+    K, V = Lambda.shape
+    for k in range(K):
+        writer.writerow(list(Lambda[k,:]))
+    
+    writer = csv.writer(open('output_phi.tsv', 'w'), delimiter = '\t')
+    D, N, K = phi.shape
+    for d in range(D):
+        writer.writerow([d])
+        for n in range(int(tf[d,:].sum())):
+            writer.writerow(list(phi[d,n,:]))
+
 def readResults():
     reader = csv.reader(open('output_gamma.tsv', 'r'), delimiter = '\t')
     gamma = list()
@@ -206,6 +225,26 @@ def createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1):
 ##### End of Synthetic Data Generation #####
 
 ##### Start of Cancer Data Generation #####
+
+def getGeneLabels(filename):
+    filepath = "CancerData/" + filename
+    status = os.path.isfile(filepath) 
+    if(not status):
+        zipp = zipfile.ZipFile("./data_CNA_notna.txt.zip")
+        zipp.extractall("CancerData")
+
+    with open(filepath) as infile:
+        # Read header line
+        first_line = infile.readline()
+    
+        # Read remaning lines
+        gene_labels = []
+        for line in infile:
+            content = line.split()[0]
+            gene_labels.append(content + "_neg")
+            gene_labels.append(content + "_pos")
+            
+    return gene_labels
 
 def loadCancerDataBinary(filename):
 # This function returns a binary (DxV) sparse matrix 
