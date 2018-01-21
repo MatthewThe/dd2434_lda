@@ -62,9 +62,9 @@ def main(argv):
     #MaximizationStepUnitTest()
     #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
     
-    alpha = 5.0 / K
+    alpha = 50.0 / K
     gamma = np.ones((D,K)) * (alpha + float(N)/K)
-    eta = 1.0 # 50.0 / V
+    eta = 50.0 / V
     Lambda = np.random.rand(K,V) * 0.5 + 0.5
     phi = np.ones((D,N,K)) * (1./ K)
     
@@ -756,7 +756,7 @@ def plotComplexityDocumentModeling(K, perp):
 ### Start of document classifiaction ###
 
 # get 8000 documents out of ~21000 documents
-def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000):
+def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000, returnData = False):
     data = []
     labels_1 = []
     topic_of_interest_1 = keyword_1
@@ -784,8 +784,11 @@ def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000):
                                  stop_words='english')
     tf = vectorizer.fit_transform(data)
     dictionary = vectorizer.get_feature_names()
-
-    return (tf, labels_1, labels_2, topic_texts, dictionary)
+    
+    if returnData:
+      return (tf, labels_1, labels_2, topic_texts, dictionary, data)
+    else:
+      return (tf, labels_1, labels_2, topic_texts, dictionary)
 
 # Replace with gamma for topic distribution
 def MockTopicData():
