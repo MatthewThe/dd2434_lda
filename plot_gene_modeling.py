@@ -79,7 +79,7 @@ def readResults(inputPath):
     reader = csv.reader(open(os.path.join(inputPath, 'output_gamma.tsv'), 'r'), delimiter = '\t')
     gamma = list()
     for row in reader:
-      gamma.append(map(float, row[:-1]))
+      gamma.append(map(float, row))
     
     reader = csv.reader(open(os.path.join(inputPath, 'output_Lambda.tsv'), 'r'), delimiter = '\t')
     Lambda = list()
