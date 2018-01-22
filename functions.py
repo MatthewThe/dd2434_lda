@@ -17,17 +17,14 @@ import zipfile
 import os.path
 
 from sklearn import datasets, svm
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import accuracy_score
 
 def main(argv):
     np.random.seed(1)
-    K = 3
+    K = 10
+    dataSet = "cancer" # one of "simulated", "reuters", "cancer", "simple"
         
     print("*** LOADING DATA ***")
-    generatedData = True
-    if generatedData:
+    if dataSet == "simulated":
         D = 50
         N = 15
         V = 30
@@ -41,12 +38,25 @@ def main(argv):
         print(theta_original)
         print("*** Original beta ***")
         print(beta_original)
-    else:
+        
+        alpha_init = 5.0 / K
+        eta_init = 1.0
+    elif dataSet == "reuters":
         tf, labels_1, labels_2, topic_texts, dictionary = loadData('reutersdata', 'earn', 'grain', maxDocs = 8000)
-        #tf = loadSimpleData()
-        #tf = csr_matrix(tf)
-        #filename = "data_CNA_notna.txt"
-        #tf = loadCancerDataPosNeg(filename) # or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
+        alpha_init = 50.0 / K
+        eta_init = 50.0 / len(dictionary)
+    elif dataSet == "simple":
+        tf = loadSimpleData()
+        tf = csr_matrix(tf)
+        alpha_init = 5.0 / K
+        eta_init = 1.0
+    elif dataSet == "cancer":
+        filename = "data_CNA_notna.txt"
+        tf = loadCancerDataPosNeg(filename) # or tf=loadCancerDataAbsolute(filename) or tf=loadCancerDataBinary(filename)
+        alpha_init = 1.0
+        eta_init = 5.0
+    else:
+        sys.exit("Unknown dataset: %s" % dataSet)
     
     # Initialize parameters
 
@@ -62,16 +72,13 @@ def main(argv):
     #MaximizationStepUnitTest()
     #VariationalExpectationMaximizationUnitTest(tf, D, K, V, N)
     
-    alpha = 50.0 / K
     gamma = np.ones((D,K)) * (alpha + float(N)/K)
-    eta = 50.0 / V
     Lambda = np.random.rand(K,V) * 0.5 + 0.5
     phi = np.ones((D,N,K)) * (1./ K)
     
-    gamma, Lambda, phi = VariationalExpectationMaximization(tf, alpha, eta, gamma, phi, Lambda) 
-    #gamma = readResults()
-    
-    if generatedData:
+    gamma, Lambda, phi = VariationalExpectationMaximization(tf, alpha_init, eta_init, gamma, phi, Lambda) 
+
+    if dataSet == "simulated":
         print("*** Original alpha: %.5f, Original eta: %.5f ***\n" % (alpha_original, eta_original))
         print("\n*** Original beta ***")
         print(beta_original)
@@ -82,21 +89,18 @@ def main(argv):
         print(compareGamma)
         plt.imshow(compareGamma, aspect = 'auto', interpolation = 'none', cmap = 'Reds')
         plt.show()
+    elif dataSet == "reuters":
+        printResultsReuters(tf, gamma, Lambda, phi, topic_texts)
+    elif dataSet == "simple":
+        print(tf)
+        print(gamma)
+    elif dataSet == "cancer":
+        printResults(tf, gamma, Lambda, phi)
     else:
-        printResults(tf, gamma, Lambda, phi, topic_texts)
+        sys.exit("Unknown dataset: %s" % dataSet)
         
-        mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim = DocumentClassification(gamma, tf, labels_1)
-        plt.figure()
-        plotSVMModelAccuracy(mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
-        
-        mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim = DocumentClassification(gamma, tf, labels_2)
-        plt.figure()
-        plotSVMModelAccuracy(mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
-        
-        plt.show()
-        
-def printResults(tf, gamma, Lambda, phi, topic_texts):
-    D = len(topic_texts)
+def printResultsReuters(tf, gamma, Lambda, phi, topic_texts):
+    D, K = gamma.shape
     writer = csv.writer(open('output_gamma.tsv', 'w'), delimiter = '\t')
     for d in range(D):
         writer.writerow(list(gamma[d,:]) + [topic_texts[d]])
@@ -114,7 +118,7 @@ def printResults(tf, gamma, Lambda, phi, topic_texts):
             writer.writerow(list(phi[d,n,:]))
 
 
-def printResultsCancer(tf, gamma, Lambda, phi):
+def printResults(tf, gamma, Lambda, phi):
     D = gamma.shape[0]
     writer = csv.writer(open('output_gamma.tsv', 'w'), delimiter = '\t')
     for d in range(D):
@@ -131,13 +135,6 @@ def printResultsCancer(tf, gamma, Lambda, phi):
         writer.writerow([d])
         for n in range(int(tf[d,:].sum())):
             writer.writerow(list(phi[d,n,:]))
-
-def readResults():
-    reader = csv.reader(open('output_gamma.tsv', 'r'), delimiter = '\t')
-    gamma = list()
-    for row in reader:
-      gamma.append(map(float, row[:-1]))
-    return np.array(gamma)
     
 ##### Start of Synthetic Data Generation #####
 def createAlpha(maxAlpha=1):
@@ -225,26 +222,6 @@ def createSampleSparse(D,N,K,V,maxAlpha=1, maxEta=1):
 ##### End of Synthetic Data Generation #####
 
 ##### Start of Cancer Data Generation #####
-
-def getGeneLabels(filename):
-    filepath = "CancerData/" + filename
-    status = os.path.isfile(filepath) 
-    if(not status):
-        zipp = zipfile.ZipFile("./data_CNA_notna.txt.zip")
-        zipp.extractall("CancerData")
-
-    with open(filepath) as infile:
-        # Read header line
-        first_line = infile.readline()
-    
-        # Read remaning lines
-        gene_labels = []
-        for line in infile:
-            content = line.split()[0]
-            gene_labels.append(content + "_neg")
-            gene_labels.append(content + "_pos")
-            
-    return gene_labels
 
 def loadCancerDataBinary(filename):
 # This function returns a binary (DxV) sparse matrix 
@@ -828,82 +805,7 @@ def loadData(folderName, keyword_1, keyword_2, maxDocs = 1000, returnData = Fals
       return (tf, labels_1, labels_2, topic_texts, dictionary, data)
     else:
       return (tf, labels_1, labels_2, topic_texts, dictionary)
-
-# Replace with gamma for topic distribution
-def MockTopicData():
-    gamma_matrix=np.random.rand(8000, 50)
-
-    return (gamma_matrix)
-
-#Classify documents into binary class
-# Run for EARN vs NOT EARN and GRAIN vs NOT GRAIN, recursively
-def DocumentClassification(gamma_matrix, tf, labels_1_array, num_runs = 3):
-    print("*** DOCUMENT CLASSIFICATION ***")
     
-    # initialize the svm parameters for grid search and run both linear and radial basis function as kernels
-    #parameters = {'kernel': ('linear','rbf'), 'C': [1,3,5,7,10], 'gamma':[0.01,0.05,0.10,0.3,0.5]}
-    parameters = {'C': [1,3,5,7,10]}
-    
-    # proportion of test data
-    train_data_size = [0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]
-    
-    print("*** LDA gamma features ***")
-    ## building classifier for low dimension data D(8000) X K(50) (for LDA features)
-    mean_stats_low_dim, sd_stats_low_dim = trainSVMs(num_runs, gamma_matrix, labels_1_array, parameters, train_data_size)
-    
-    if True:
-      print("*** Word features ***")
-      ### building a classifier for high dimension data D(8000) X w (for word feature)
-      mean_stats_high_dim, sd_stats_high_dim = trainSVMs(num_runs, tf, labels_1_array, parameters, train_data_size)
-    else:
-      mean_stats_high_dim, sd_stats_high_dim = np.nan, np.nan
-
-    return (mean_stats_low_dim, sd_stats_low_dim, mean_stats_high_dim, sd_stats_high_dim)
-    
-def trainSVMs(num_runs, data_array, labels_1_array, parameters, train_data_size):
-    low_dim_acc = []
-    for k in range(num_runs):
-        print("*** Run %d ***" % k)
-        acc_list_low_dim = []
-        for i in train_data_size:
-            print("*** test data size %f ***" % i)
-            X_topic_train, X_topic_test, y_topic_train, y_topic_test = train_test_split(data_array, labels_1_array, test_size = 1.0 - i, random_state = k)
-            svr = svm.LinearSVC()
-            grid = GridSearchCV(svr, parameters)
-            grid.fit(X_topic_train, y_topic_train)
-            predicted = grid.predict(X_topic_test)
-            acc_list_low_dim.append(accuracy_score(y_topic_test, predicted))
-        low_dim_acc.append(acc_list_low_dim)
-        print acc_list_low_dim
-    accuracy_low_dim = np.array(low_dim_acc)
-    mean_stats_low_dim = np.mean(accuracy_low_dim, axis=0)
-    sd_stats_low_dim = np.std(accuracy_low_dim, axis=0)
-    
-    return mean_stats_low_dim, sd_stats_low_dim
-    #print (sd_stats_low_dim)
-    
-    
-
-# Get statistics (mean and standard deviation) for plotting
-#mean_low_dim, sd_low_dim,  mean_high_dim, sd_high_dim = DocumentClassification()
-
-# Training data - accuracy plot (fig. 10)
-def plotSVMModelAccuracy(mean_low_dim, sd_low_dim, mean_high_dim, sd_high_dim):
-    #scatter plot for LDA features
-    plt.errorbar(np.array([0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]), mean_low_dim,
-                 yerr = sd_low_dim, label="LDA features", fmt="s--", linewidth=1)
-    #scatter plot for word features
-    plt.errorbar(np.array([0.01 ,0.05 ,0.1, 0.15, 0.2, 0.25]), mean_high_dim, yerr= sd_high_dim, label="Word features", fmt="s-", linewidth=1)
-    plt.rc('axes', labelsize = 15)
-    plt.ylim(0.7, 1.0)
-    plt.xlim(0,0.3)
-    plt.xlabel('Proportion of data used for training')
-    plt.ylabel('Accuracy')
-    plt.legend(loc='lower right', shadow=True, fontsize='x-large', prop={'size': 10})
-
-
-#plotSVMModelAccuracy()
-
 ### End of classificatiob ####    
 
     
